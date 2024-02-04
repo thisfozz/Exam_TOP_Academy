@@ -4,9 +4,64 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Exam_TOP_Academy"
-        mc:Ignorable="d"
-        Title="MainWindow" Height="720" Width="1280">
+        Height="515" Width="365" WindowStartupLocation="CenterScreen" WindowStyle="None"
+        AllowsTransparency="True" >
+
+    <Window.Background>
+        <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+            <GradientStop Color="#FF232D3E" Offset="0"/>
+            <GradientStop Color="#FF1D222C" Offset="1"/>
+            <GradientStop Color="#FF1D222C" Offset="0.5"/>
+        </LinearGradientBrush>
+    </Window.Background>
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="300"/>
+            <RowDefinition Height="90"/>
+        </Grid.RowDefinitions>
+        <Grid Name="ToolBar" Grid.Row="0" MouseDown="ToolBar_MouseDown">
+            <Polygon Fill="White" Opacity="0.2"
+                     Points="107,0,115,7,249,7,257,0"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                
+                <Image Name="MinButton" Height="15" Width="15" Margin="5" MouseDown="MinButton_MouseDown">
+                    <Image.Style>
+                        <Style TargetType="{x:Type Image}">
+                            <Setter Property="Source" Value="Source/Черта_не_активный.png"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding IsMouseOver, ElementName=MinButton}" Value="True">
+                                    <Setter Property="Source" Value="Source/Черта_активный.png"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Image.Style>
+                </Image>
+                
+                <Image Name="ExitButton" Height="15" Width="15" Margin="5,5,10,5" MouseDown="ExitButton_MouseDown">
+                    <Image.Style>
+                        <Style TargetType="{x:Type Image}">
+                            <Setter Property="Source" Value="Source/Закрыть_не_активный.png"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding IsMouseOver, ElementName=ExitButton}" Value="True">
+                                    <Setter Property="Source" Value="Source/Закрыть_активный.png"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Image.Style>
+                </Image>
+                
+            </StackPanel>
+        </Grid>
+        <Grid Name="LogoContainer" Grid.Row="1">
+            <TextBlock Text="Readify" 
+                       HorizontalAlignment="Center" VerticalAlignment="Center" 
+                       FontSize="24" FontWeight="Black" Foreground="White"/>
+        </Grid>
+        <Grid Grid.Row="2">
+            
+        </Grid>
 
     </Grid>
 </Window>

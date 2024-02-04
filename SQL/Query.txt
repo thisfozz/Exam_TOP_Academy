@@ -1,0 +1,147 @@
+/*
+	Необходимо хранить следующую информацию о книгах: 
+	название книги, ФИО автора, название издательства, количество страниц, жанр, год издания,
+	себестоимость, цена для продажи, является ли книга продолжением какой-то
+	другой книги (например, вторая часть дилогии).
+	
+	Приложение должно позволять: добавлять книги, удалять книги, редактировать параметры книг, продавать книги, списывать книги, вносить книги
+	в акции (например, неделя книг новогодней тематики со скидкой 10%), откладывать книги для конкретного покупателя.
+	
+	Приложение должно предоставить функциональность по поиску книг по таким параметрам: название книги, автор, жанр. 
+	Приложение должно предоставлять возможность просмотреть список новинок, список самых продаваемых книг, список самых популярных авторов, список самых популярных
+	жанров по итогам дня, недели, месяца, года. 
+*/
+
+
+/* Автор с хорошеей идеей */
+CREATE TABLE Author (
+    author_id SERIAL PRIMARY KEY,
+    first_name VARCHAR(50) NOT NULL,
+    last_name VARCHAR(50) NOT NULL,
+	middle_name VARCHAR(50)
+);
+
+/* 
+	Жанр.
+	Вероятно для -> ComboBox со строкой поиска жанров, так как в принципе количество жанров ограниченное и редко появляются новые 
+*/
+CREATE TABLE Genre (
+	genre_id SERIAL PRIMARY KEY,
+	genre_name VARCHAR(50) NOT NULL UNIQUE
+);
+
+/* Издатель не знающий потребности потребителя */
+CREATE TABLE Publisher (
+    publisher_id SERIAL PRIMARY KEY,
+    publisher_name VARCHAR(100) NOT NULL UNIQUE
+);
+
+/* 
+	Сама книга.
+	Может добавить Printing? Продажа книг - они как-то ограничены? 
+	Нжно ли отслеживать распродан ли весь тираж? Если распродан, то продажи этой книги закрываются и она улетает в архив.
+*/
+CREATE TABLE Book (
+    book_id SERIAL PRIMARY KEY,
+    title VARCHAR(100),
+	description TEXT,
+    author_id INT NOT NULL,
+    publisher_id INT NOT NULL,
+	genre_id INT NOT NULL,
+	sequel_id INT,
+    pages SMALLINT NOT NULL CHECK(pages > 0),
+    year_published SMALLINT CHECK(year_published BETWEEN 1000 AND 9999),
+    cost_price DECIMAL(6, 2),
+    selling_price DECIMAL(6, 2),
+    FOREIGN KEY (author_id) REFERENCES Author(author_id),
+    FOREIGN KEY (publisher_id) REFERENCES Publisher(publisher_id),
+	FOREIGN KEY (genre_id) REFERENCES Genre(genre_id),
+    FOREIGN KEY (sequel_id) REFERENCES Book(book_id)
+);
+
+
+/* Продолжение следует... */
+CREATE TABLE Sequels (
+    sequel_id SERIAL PRIMARY KEY,
+    original_book_id INT,
+    continuation_title VARCHAR(100) NOT NULL,
+    FOREIGN KEY (original_book_id) REFERENCES Book(book_id)
+);
+
+
+/* Акции - какая конкретная акция */
+CREATE TABLE Promotion (
+    promotion_id SERIAL PRIMARY KEY,
+    promotion_name VARCHAR(100) NOT NULL UNIQUE,
+    description VARCHAR(255),
+    discount_percentage INT NOT NULL CHECK(discount_percentage > 0),
+    start_date TIMESTAMP WITH TIME ZONE NOT NULL CHECK(start_date >= CURRENT_DATE),
+    end_date TIMESTAMP WITH TIME ZONE NOT NULL CHECK(end_date > start_date),
+    is_active_promotion BOOLEAN NOT NULL
+);
+
+
+/* 
+	Распродажа книг во время конкретной акции(Promotion).
+	Может добавить *count_sold* чтобы знать количество проданных книг во время акции?
+*/
+CREATE TABLE SaleBook (
+    sale_id SERIAL PRIMARY KEY,
+    book_id INT NOT NULL,
+    promotion_id INT NOT NULL,
+    FOREIGN KEY (book_id) REFERENCES Book(book_id) ON DELETE CASCADE,
+    FOREIGN KEY (promotion_id) REFERENCES Promotion(promotion_id) ON DELETE CASCADE
+);
+
+
+/* Конкретный покупатель */
+CREATE TABLE Customer (
+    customer_id SERIAL PRIMARY KEY,
+    first_name VARCHAR(50) NOT NULL,
+    last_name VARCHAR(50)
+);
+
+
+/* Отложенная книга - конкретная книга/книги(Book) закрепленные за одним покупателем(Customer) */
+CREATE TABLE ReservedBook (
+    reserve_id SERIAL PRIMARY KEY,
+    book_id INT NOT NULL,
+    customer_id INT NOT NULL,
+    reserve_date TIMESTAMP WITH TIME ZONE NOT NULL,
+	is_active_reserved BOOLEAN NOT NULL,
+    FOREIGN KEY (book_id) REFERENCES Book(book_id) ON DELETE CASCADE,
+    FOREIGN KEY (customer_id) REFERENCES Customer(customer_id) ON DELETE CASCADE
+);
+
+
+/* 
+	Списанные книги - когда книга по какой-то причине(или без) удалена из общего списка. 
+	Может добавить description для описания причины удаления?
+*/
+CREATE TABLE ArchiveBook
+(
+	archive_id SERIAL PRIMARY KEY,
+	book_id INT NOT NULL,
+	FOREIGN KEY (book_id) REFERENCES Book(book_id) ON DELETE CASCADE
+);
+
+
+/* 
+	Продажи для отслеживания количества проданных книг.
+	Для чего? Самые популярные книги/авторы/жанры, Самые популярные книги/жанры/авторы за какое-то время
+*/
+CREATE TABLE Sales
+(
+	sales_id SERIAL PRIMARY KEY,
+	book_id INT,
+	quantity_sold INT,
+	sales_date TIMESTAMP WITH TIME ZONE NOT NULL CHECK(sales_date >= CURRENT_DATE),
+	FOREIGN KEY (book_id) REFERENCES Book(book_id)
+);
+
+
+
+
+
+
+
