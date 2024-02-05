@@ -132,4 +132,7 @@
   <data name="SettingsResources" xml:space="preserve">
     <value>Настройки</value>
   </data>
+  <data name="StayOnlineResources" xml:space="preserve">
+    <value>Оставаться в сети</value>
+  </data>
 </root>

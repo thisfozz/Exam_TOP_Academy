@@ -132,4 +132,7 @@
   <data name="SettingsResources" xml:space="preserve">
     <value>Settings</value>
   </data>
+  <data name="StayOnlineResources" xml:space="preserve">
+    <value>Keep me logged in</value>
+  </data>
 </root>

@@ -9,8 +9,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Source\Вопрос.png" />
+    <None Remove="Source\Галочка.png" />
     <None Remove="Source\Закрыть_активный.png" />
     <None Remove="Source\Закрыть_не_активный.png" />
+    <None Remove="Source\Информация.png" />
     <None Remove="Source\Настройки.png" />
     <None Remove="Source\Свернуть_активный.png" />
     <None Remove="Source\Свернуть_не_активный.png" />
@@ -18,10 +21,16 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Source\Галочка.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Source\Закрыть_активный.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Source\Закрыть_не_активный.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Source\Информация.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Source\Настройки.png">

@@ -104,5 +104,14 @@ namespace Exam_TOP_Academy.Properties {
                 return ResourceManager.GetString("SettingsResources", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Keep me logged in.
+        /// </summary>
+        public static string StayOnlineResources {
+            get {
+                return ResourceManager.GetString("StayOnlineResources", resourceCulture);
+            }
+        }
     }
 }
