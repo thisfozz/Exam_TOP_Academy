@@ -11,14 +11,14 @@
     <Window.Background>
         <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
             <GradientStop Color="#2f285c" Offset="0.2"/>
-            <GradientStop Color="#2c284f" Offset="0.5"/>
-            <GradientStop Color="#1e1d29" Offset="1.4"/>
+            <GradientStop Color="#3f367c" Offset="0.5"/>
+            <GradientStop Color="#50449c" Offset="1.4"/>
         </LinearGradientBrush>
     </Window.Background>
     <Window.Resources>
         <Style x:Key="ComboboxButton" TargetType="Button">
             <Setter Property="OverridesDefaultStyle" Value="True"/>
-            <Setter Property="Background" Value="#FF313238"/>
+            <Setter Property="Background" Value="#536dbc"/>
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
@@ -30,7 +30,7 @@
                                 <BeginStoryboard>
                                     <Storyboard>
                                         <ThicknessAnimation Storyboard.TargetProperty="Margin" 
-                                                            Duration="0:0:0.100" To="2,2,0,0"/>
+                                                            Duration="0:0:0.100" To="1,1,1,1"/>
                                     </Storyboard>
                                 </BeginStoryboard>
                             </EventTrigger>
@@ -72,12 +72,12 @@
         </Style>
 
         <Style x:Key="TextBox" TargetType="TextBox">
-            <Setter Property="Background" Value="#3e3c42"/>
+            <Setter Property="Background" Value="#958cca"/>
             <Setter Property="Height" Value="35"/>
             <Setter Property="VerticalContentAlignment" Value="Center"/>
             <Setter Property="Foreground" Value="White"/>
             <Setter Property="FontSize" Value="13"/>
-            <Setter Property="BorderBrush" Value="Gray"/>
+            <Setter Property="BorderBrush" Value="Black"/>
             <Setter Property="Padding" Value="10,0,0,0"/>
             <Setter Property="Template">
                 <Setter.Value>
@@ -85,8 +85,7 @@
                         <Grid x:Name="root" Height="{TemplateBinding Height}" Width="{TemplateBinding Width}" SnapsToDevicePixels="True">
                             <Border x:Name="Background" BorderThickness="1" CornerRadius="2" 
                                     Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}"/>
-                            <ScrollViewer x:Name="PART_ContentHost" BorderThickness="0" Padding="{TemplateBinding Padding}" 
-                                          IsTabStop="False" Background="{x:Null}"
+                            <ScrollViewer x:Name="PART_ContentHost" BorderThickness="0" Padding="{TemplateBinding Padding}" Background="{x:Null}"
                                           TextElement.Foreground="{TemplateBinding Foreground}"/>
                         </Grid>
                         <ControlTemplate.Triggers>
@@ -95,14 +94,45 @@
                             </Trigger>
                             <Trigger Property="IsFocused" Value="True">
                                 <Setter Property="BorderBrush" Value="#FF1D578C"/>
-                                <Setter Property="Background" Value="#353338"/>
+                                <Setter Property="Background" Value="#837ccc"/>
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
         </Style>
-        
+
+        <Style x:Key="AuthorizationButton" TargetType="Button">
+            <Setter Property="OverridesDefaultStyle" Value="True"/>
+            <Setter Property="Background" Value="#62449c"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Name="Border" BorderThickness="0" BorderBrush="Black" Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <EventTrigger RoutedEvent="PreviewMouseDown">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ColorAnimation Storyboard.TargetProperty="Background.Color" To="#bdb8e0" Duration="0:0:0.0005"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                            <EventTrigger RoutedEvent="PreviewMouseUp">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ColorAnimation Storyboard.TargetProperty="Background.Color" To="#62449c" Duration="0:0:0.0005"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+
     </Window.Resources>
     <Grid Name="MainGrid">
         <Grid.RowDefinitions>
@@ -112,7 +142,7 @@
             <RowDefinition Height="90"/>
         </Grid.RowDefinitions>
         <Grid Name="ToolBar" Grid.Row="0" MouseDown="ToolBar_MouseDown">
-            <Polygon Fill="White" Opacity="0.2"
+            <Polygon Fill="Gray" Opacity="0.2"
                      Points="107,0,115,7,249,7,257,0"/>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
 
@@ -146,44 +176,17 @@
         </Grid>
         <Grid Name="LogoContainer" Grid.Row="1">
             <Border Background="Transparent" MouseDown="LogoContainer_MouseDown">
-                <TextBlock Text="Readify Logo" 
-                   HorizontalAlignment="Center" VerticalAlignment="Center" 
-                   FontSize="24" FontWeight="Black" Foreground="White"/>
+                <Image Source="Source/Логотип.png" Margin="35,10,3,10"/>
             </Border>
         </Grid>
 
-        <Border Grid.Row="2" Height="24" Width="40" 
+        <Border Grid.Row="2" Height="35" Width="46" 
                 HorizontalAlignment="Left" VerticalAlignment="Top" 
                 Margin="25,15,0,0" 
-                CornerRadius="2" BorderThickness="1" Background="Black">
-            <Border.Style>
-                <Style TargetType="{x:Type Border}">
-                    <Setter Property="BorderBrush" Value="#FF333842"/>
-                    <Style.Triggers>
-                        <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="BorderBrush" Value="#FF51555C"/>
-                        </Trigger>
-                        <EventTrigger RoutedEvent="PreviewMouseDown">
-                            <BeginStoryboard>
-                                <Storyboard>
-                                    <ColorAnimation Storyboard.TargetProperty="BorderBrush.Color" Duration="0:0:0.100" To="#FF333842"/>
-                                </Storyboard>
-                            </BeginStoryboard>
-                        </EventTrigger>
-
-                        <EventTrigger RoutedEvent="PreviewMouseUp">
-                            <BeginStoryboard>
-                                <Storyboard>
-                                    <ColorAnimation Storyboard.TargetProperty="BorderBrush.Color" Duration="0:0:0.100" To="#FF51555C"/>
-                                </Storyboard>
-                            </BeginStoryboard>
-                        </EventTrigger>
-                    </Style.Triggers>
-                </Style>
-            </Border.Style>
+                CornerRadius="1" BorderThickness="1" Background="Black">
             <Button Style="{StaticResource ComboboxButton}" Click="Button_Click">
                 <StackPanel>
-                    <Image Height="20" Width="20" Source="Source/Настройки.png">
+                    <Image Height="25" Width="25" Source="Source/Настройки.png">
                     </Image>
                 </StackPanel>
             </Button>
@@ -246,7 +249,7 @@
                     <StackPanel Orientation="Horizontal">
                         <Border Height="20" Width="20"
                                 CornerRadius="2" BorderThickness="1" HorizontalAlignment="Left" 
-                                Background="Black">
+                                Background="#536dbc">
                             <Border.Style>
                                 <Style TargetType="{x:Type Border}">
                                     <Setter Property="BorderBrush" Value="#FF333842"/>
@@ -294,5 +297,15 @@
         <Image Grid.Row="2" Width="15" Height="15" 
                VerticalAlignment="Center" HorizontalAlignment="Center" 
                Margin="-20,110,10,0" Source="Source/Информация.png"></Image>
+
+        <Border x:Name="AuthorizationButton" Grid.Row="2" Height="30"
+                Margin="25,15,25,-200" Background="Black">
+            <Border.Style>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="BorderBrush" Value="#FF333842"/>
+                </Style>
+            </Border.Style>
+            <Button Content="{x:Static resource:Resources.AuthorizationResources}" FontSize="16" Foreground="White" Style="{StaticResource AuthorizationButton}"/>
+        </Border>
     </Grid>
 </Window>

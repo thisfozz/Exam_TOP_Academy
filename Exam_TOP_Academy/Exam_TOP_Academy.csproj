@@ -14,6 +14,7 @@
     <None Remove="Source\Закрыть_активный.png" />
     <None Remove="Source\Закрыть_не_активный.png" />
     <None Remove="Source\Информация.png" />
+    <None Remove="Source\Логотип.png" />
     <None Remove="Source\Настройки.png" />
     <None Remove="Source\Свернуть_активный.png" />
     <None Remove="Source\Свернуть_не_активный.png" />
@@ -31,6 +32,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Source\Информация.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Source\Логотип.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Source\Настройки.png">

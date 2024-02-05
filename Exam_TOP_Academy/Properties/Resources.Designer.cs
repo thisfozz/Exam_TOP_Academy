@@ -61,6 +61,15 @@ namespace Exam_TOP_Academy.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Authorization.
+        /// </summary>
+        public static string AuthorizationResources {
+            get {
+                return ResourceManager.GetString("AuthorizationResources", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Continue Without Login In.
         /// </summary>
         public static string ContinueWithoutLoginResources {
