@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:local="clr-namespace:Exam_TOP_Academy"
         xmlns:resource="clr-namespace:Exam_TOP_Academy.Properties"
-        Height="515" Width="365" WindowStartupLocation="CenterScreen" WindowStyle="None">
+        Height="515" Width="365" WindowStartupLocation="CenterOwner" WindowStyle="None" ResizeMode="NoResize">
 
     <Window.Background>
         <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
@@ -12,136 +12,15 @@
             <GradientStop Color="#50449c" Offset="1.4"/>
         </LinearGradientBrush>
     </Window.Background>
+    
     <Window.Resources>
-        <Style x:Key="ComboboxButton" TargetType="Button">
-            <Setter Property="OverridesDefaultStyle" Value="True"/>
-            <Setter Property="Background" Value="#536dbc"/>
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="Button">
-                        <Border Name="Border" BorderThickness="0" BorderBrush="Black" Background="{TemplateBinding Background}">
-                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                        </Border>
-                        <ControlTemplate.Triggers>
-                            <EventTrigger RoutedEvent="PreviewMouseDown">
-                                <BeginStoryboard>
-                                    <Storyboard>
-                                        <ThicknessAnimation Storyboard.TargetProperty="Margin" 
-                                                            Duration="0:0:0.100" To="1,1,1,1"/>
-                                    </Storyboard>
-                                </BeginStoryboard>
-                            </EventTrigger>
-                            <EventTrigger RoutedEvent="PreviewMouseUp">
-                                <BeginStoryboard>
-                                    <Storyboard>
-                                        <ThicknessAnimation Storyboard.TargetProperty="Margin" 
-                                                            Duration="0:0:0.100" To="0"/>
-                                    </Storyboard>
-                                </BeginStoryboard>
-                            </EventTrigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-
-        <Style x:Key="SettingsButton" TargetType="Button">
-            <Setter Property="OverridesDefaultStyle" Value="True"/>
-            <Setter Property="Background" Value="#FF272C3B"/>
-            <Setter Property="Height" Value="25"/>
-            <Setter Property="Foreground" Value="#FF929496"/>
-            <Setter Property="FontSize" Value="13"/>
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="Button">
-                        <Border Name="Border" BorderThickness="0" BorderBrush="Black" Background="{TemplateBinding Background}">
-                            <ContentPresenter HorizontalAlignment="Left" VerticalAlignment="Center" Margin="15,0,0,0"/>
-                        </Border>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Background" Value="#FF323945"/>
-                                <Setter Property="Foreground" Value="#FFC3C4C8"/>
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-
-        <Style x:Key="TextBox" TargetType="TextBox">
-            <Setter Property="Background" Value="#958cca"/>
-            <Setter Property="Height" Value="35"/>
-            <Setter Property="VerticalContentAlignment" Value="Center"/>
-            <Setter Property="Foreground" Value="White"/>
-            <Setter Property="FontSize" Value="13"/>
-            <Setter Property="BorderBrush" Value="Black"/>
-            <Setter Property="Padding" Value="10,0,0,0"/>
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="TextBox">
-                        <Grid x:Name="root" Height="{TemplateBinding Height}" Width="{TemplateBinding Width}" SnapsToDevicePixels="True">
-                            <Border x:Name="Background" BorderThickness="1" CornerRadius="2" 
-                                    Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}"/>
-                            <ScrollViewer x:Name="PART_ContentHost" BorderThickness="0" Padding="{TemplateBinding Padding}" Background="{x:Null}"
-                                          TextElement.Foreground="{TemplateBinding Foreground}"/>
-                        </Grid>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="BorderBrush" Value="#9a92ad"/>
-                            </Trigger>
-                            <Trigger Property="IsFocused" Value="True">
-                                <Setter Property="BorderBrush" Value="#FF1D578C"/>
-                                <Setter Property="Background" Value="#837ccc"/>
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-
-        <Style x:Key="AuthorizationButton" TargetType="Button">
-            <Setter Property="OverridesDefaultStyle" Value="True"/>
-            <Setter Property="Background" Value="#62449c"/>
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="Button">
-                        <Border Name="Border" BorderThickness="0" BorderBrush="Black" Background="{TemplateBinding Background}">
-                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                        </Border>
-                        <ControlTemplate.Triggers>
-                            <EventTrigger RoutedEvent="PreviewMouseDown">
-                                <BeginStoryboard>
-                                    <Storyboard>
-                                        <ColorAnimation Storyboard.TargetProperty="Background.Color" To="#bdb8e0" Duration="0:0:0.0005"/>
-                                    </Storyboard>
-                                </BeginStoryboard>
-                            </EventTrigger>
-                            <EventTrigger RoutedEvent="PreviewMouseUp">
-                                <BeginStoryboard>
-                                    <Storyboard>
-                                        <ColorAnimation Storyboard.TargetProperty="Background.Color" To="#62449c" Duration="0:0:0.0005"/>
-                                    </Storyboard>
-                                </BeginStoryboard>
-                            </EventTrigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-
-        <Style x:Key="ToolTipStyle" TargetType="ToolTip">
-            <Setter Property="Background" Value="#423881"/>
-            <Setter Property="Foreground" Value="White"/>
-            <Setter Property="BorderBrush" Value="Black"/>
-            <Setter Property="BorderThickness" Value="1"/>
-            <Setter Property="FontSize" Value="13"/>
-            <Setter Property="HorizontalOffset" Value="10"/>
-            <Setter Property="VerticalOffset" Value="10"/>
-        </Style>
-
-
-
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../Styles/Styles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Window.Resources>
+    
     <Grid Name="MainGrid">
         <Grid.RowDefinitions>
             <RowDefinition Height="25"/>
@@ -149,12 +28,11 @@
             <RowDefinition Height="300"/>
             <RowDefinition Height="90"/>
         </Grid.RowDefinitions>
-        <!--MouseDown(перемещение) исправить-->
         <Grid Name="ToolBar" Grid.Row="0">
             <Polygon Fill="Gray" Opacity="0.2"
-                     Points="107,0,115,7,249,7,257,0"/>
+                     Points="107,0,115,7,249,7,257,0">
+            </Polygon>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                <!--MouseDown(свернуть) исправить-->
                 <Image Name="MinButton" Height="15" Width="15" Margin="5">
                     <Image.Style>
                         <Style TargetType="{x:Type Image}">
@@ -166,8 +44,10 @@
                             </Style.Triggers>
                         </Style>
                     </Image.Style>
+                    <Image.InputBindings>
+                        <MouseBinding Gesture="LeftClick" Command="{Binding RollUpFormCommand}" />
+                    </Image.InputBindings>
                 </Image>
-                <!--MouseDown(закрытие формы) исправить-->
                 <Image Name="ExitButton" Height="15" Width="15" Margin="5,5,10,5">
                     <Image.Style>
                         <Style TargetType="{x:Type Image}">
@@ -179,45 +59,49 @@
                             </Style.Triggers>
                         </Style>
                     </Image.Style>
+                    <Image.InputBindings>
+                        <MouseBinding Gesture="LeftClick" Command="{Binding CloseFormCommand}" />
+                    </Image.InputBindings>
                 </Image>
-
             </StackPanel>
+            <Grid.InputBindings>
+                <MouseBinding Gesture="LeftClick" Command="{Binding MovingFormCommand}"/>
+            </Grid.InputBindings>
         </Grid>
         
-        <!--MouseDown(перемещение формы) исправить-->
         <Grid Name="LogoContainer" Grid.Row="1">
             <Border Background="Transparent">
                 <Image Source="../Source/Логотип.png" Margin="35,10,3,10"/>
             </Border>
+            <Grid.InputBindings>
+                <MouseBinding Gesture="LeftClick" Command="{Binding MovingFormCommand}"/>
+            </Grid.InputBindings>
         </Grid>
 
         <Border Grid.Row="2" Height="35" Width="46" 
                 HorizontalAlignment="Left" VerticalAlignment="Top" 
-                Margin="25,15,0,0" 
+                Margin="23,15,0,0" 
                 CornerRadius="1" BorderThickness="1" Background="Black">
-            <Button Style="{StaticResource ComboboxButton}" Command="{Binding OpenSettingsButtonCommand}">
+            <Button Style="{StaticResource ComboboxButton}" Command="{Binding OpenSettingsGridCommand}">
                 <StackPanel>
                     <Image Height="25" Width="25" Source="../Source/Настройки.png">
                     </Image>
                 </StackPanel>
             </Button>
         </Border>
-        <Grid Name="SettingsGrid" Grid.Row="2" Height="160" Width="210" 
+        <Grid Grid.Row="2" Height="160" Width="210" 
               HorizontalAlignment="Left" VerticalAlignment="Top" Margin="25,42,0,0" 
-              Visibility="Hidden" Panel.ZIndex="1">
+              Visibility="{Binding SettingsGridVisibility}" Panel.ZIndex="1">
             <Polygon Fill="Black" StrokeThickness="2" Stroke="#FF0C0101"
-                     Points="0,8,0,85,205,85,205,8"/>
+                     Points="0,8,0,65,180,65,180,8"/>
 
             <Polygon Fill="#FF272E3B" StrokeThickness="1" Stroke="#FF40454E"
-                     Points="0,8,0,85,205,85,205,8"/>
+                     Points="0,8,0,65,180,65,180,8"/>
 
-            <Grid Height="80" Width="205" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,10,0,0">
+            <Grid Height="80" Width="180" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,10,0,0">
                 <StackPanel Orientation="Vertical">
-                    <Button Style="{StaticResource SettingsButton}">
+                    <Button Style="{StaticResource SettingsButton}" Command="{Binding OpenSettingsFormCommand}">
                         <TextBlock Text="{x:Static resource:Resources.SettingsResources}"/>
-                    </Button>
-                    <Button Style="{StaticResource SettingsButton}">
-                        <TextBlock Text="{x:Static resource:Resources.ContinueWithoutLoginResources}"/>
                     </Button>
                     <Button Style="{StaticResource SettingsButton}">
                         <TextBlock Text="{x:Static resource:Resources.HelpMeResources}"/>
@@ -308,7 +192,7 @@
         </ToggleButton>
         <Image Grid.Row="2" Width="15" Height="15" 
        VerticalAlignment="Center" HorizontalAlignment="Center" 
-       Margin="-20,110,10,0" Source="../Source/Информация.png">
+       Margin="-15,110,10,0" Source="../Source/Информация.png">
             <Image.ToolTip>
                 <ToolTip Content="{x:Static resource:Resources.HintToolTipResources}" Style="{StaticResource ToolTipStyle}" />
             </Image.ToolTip>
@@ -355,6 +239,9 @@
                     </Style.Triggers>
                 </Style>
             </TextBlock.Style>
+            <TextBlock.InputBindings>
+                <MouseBinding Gesture="LeftClick" Command="{Binding OpenRegistrationFormCommand}"/>
+            </TextBlock.InputBindings>
         </TextBlock>
     </Grid>
 </Window>

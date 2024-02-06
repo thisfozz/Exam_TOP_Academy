@@ -1,48 +1,95 @@
 ﻿using Command_;
 using Exam_TOP_Academy.View;
+using System.ComponentModel;
 using System.Windows;
 using System.Windows.Input;
 
 namespace Exam_TOP_Academy.ViewModels;
 
-public class AuthorizationViewModel
+public class AuthorizationViewModel : INotifyPropertyChanged
 {
-    public ICommand OpenSettingsButtonCommand { get; }
+    public ICommand OpenSettingsGridCommand { get; }
     public ICommand AuthorizationButtonCommand { get; }
     public ICommand CloseFormCommand { get; }
     public ICommand RollUpFormCommand { get; }
     public ICommand MovingFormCommand { get; }
+    public ICommand OpenRegistrationFormCommand { get; }
+    public ICommand OpenSettingsFormCommand { get; }
+
     public AuthorizationViewModel()
     {
-        OpenSettingsButtonCommand = new DelegateCommand(OpenSettings, _ => true);
+        SettingsGridVisibility = Visibility.Collapsed;
+        OpenSettingsGridCommand = new DelegateCommand(OpenSettingsGrid, _ => true);
         AuthorizationButtonCommand = new DelegateCommand(Authorization, _ => true);
         CloseFormCommand = new DelegateCommand(CloseForm, _ => true);
         RollUpFormCommand = new DelegateCommand(RollUpForm, _ => true);
         MovingFormCommand = new DelegateCommand(MovingForm, _ => true);
+        OpenRegistrationFormCommand = new DelegateCommand(OpenRegistration, _ => true);
+        OpenSettingsFormCommand = new DelegateCommand(OpenSettingsForm, _ => true);
     }
 
-    private void MovingForm(object obj)
+    private Visibility settingsGridVisibility;
+
+    public Visibility SettingsGridVisibility
     {
-        MessageBox.Show("Перемещение");
+        get { return settingsGridVisibility; }
+        set
+        {
+            if (value != settingsGridVisibility)
+            {
+                settingsGridVisibility = value;
+                OnPropertyChanged(nameof(SettingsGridVisibility));
+            }
+        }
     }
 
-    private void RollUpForm(object obj)
+    private void OpenSettingsGrid(object obj)
     {
-        MessageBox.Show("Окно свернуто");
-    }
-
-    private void CloseForm(object obj)
-    {
-        Application.Current.Shutdown();
+        SettingsGridVisibility = (SettingsGridVisibility == Visibility.Visible)? Visibility.Collapsed : Visibility.Visible;
     }
 
     private void Authorization(object obj)
     {
-        MessageBox.Show("Успех авторизации");
+        // Code...Перекидываю на главное окно
+        MessageBox.Show("Авторизация");
     }
 
-    private void OpenSettings(object obj)
+    private void CloseForm(object obj)
     {
-        MessageBox.Show("Настройки");
+        Application.Current.MainWindow.Close();
+    }
+    private void RollUpForm(object obj)
+    {
+        Application.Current.MainWindow.WindowState = WindowState.Minimized;
+    }
+
+    private void MovingForm(object obj)
+    {
+        Application.Current.MainWindow.DragMove();
+    }
+
+    private void OpenRegistration(object obj)
+    {
+        var registrationWindow = new RegistrationWindow();
+
+        registrationWindow.Left = Application.Current.MainWindow.Left;
+        registrationWindow.Top = Application.Current.MainWindow.Top;
+
+        Application.Current.MainWindow.Close();
+        Thread.Sleep(200);
+        Application.Current.MainWindow = registrationWindow;
+        Application.Current.MainWindow.Show();
+    }
+
+    private void OpenSettingsForm(object obj)
+    {
+        MessageBox.Show("Вы зашли в настройки!");
+    }
+
+    public event PropertyChangedEventHandler PropertyChanged;
+
+    protected virtual void OnPropertyChanged(string propertyName)
+    {
+        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
 }

@@ -123,6 +123,15 @@
   <data name="ContinueWithoutLoginResources" xml:space="preserve">
     <value>Continue Without Login In</value>
   </data>
+  <data name="EmailRersources" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="EnterLoginResources" xml:space="preserve">
+    <value>Login</value>
+  </data>
+  <data name="ExistingAccountResources" xml:space="preserve">
+    <value>Existing Account?</value>
+  </data>
   <data name="HelpMeResources" xml:space="preserve">
     <value>Help Me</value>
   </data>
@@ -135,8 +144,14 @@
   <data name="InputPasswordResources" xml:space="preserve">
     <value>Password</value>
   </data>
+  <data name="LoginResources" xml:space="preserve">
+    <value>Login</value>
+  </data>
   <data name="RegisterOnResources" xml:space="preserve">
     <value>Create Account</value>
+  </data>
+  <data name="RegistrationResources" xml:space="preserve">
+    <value>Registration</value>
   </data>
   <data name="SettingsResources" xml:space="preserve">
     <value>Settings</value>

@@ -79,6 +79,33 @@ namespace Exam_TOP_Academy.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Email.
+        /// </summary>
+        public static string EmailRersources {
+            get {
+                return ResourceManager.GetString("EmailRersources", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Login.
+        /// </summary>
+        public static string EnterLoginResources {
+            get {
+                return ResourceManager.GetString("EnterLoginResources", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Existing Account?.
+        /// </summary>
+        public static string ExistingAccountResources {
+            get {
+                return ResourceManager.GetString("ExistingAccountResources", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Help Me.
         /// </summary>
         public static string HelpMeResources {
@@ -115,11 +142,29 @@ namespace Exam_TOP_Academy.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Login.
+        /// </summary>
+        public static string LoginResources {
+            get {
+                return ResourceManager.GetString("LoginResources", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Create Account.
         /// </summary>
         public static string RegisterOnResources {
             get {
                 return ResourceManager.GetString("RegisterOnResources", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Registration.
+        /// </summary>
+        public static string RegistrationResources {
+            get {
+                return ResourceManager.GetString("RegistrationResources", resourceCulture);
             }
         }
         
