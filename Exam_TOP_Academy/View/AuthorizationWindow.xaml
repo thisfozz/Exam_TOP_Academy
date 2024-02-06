@@ -150,12 +150,12 @@
             <RowDefinition Height="90"/>
         </Grid.RowDefinitions>
         <!--MouseDown(перемещение) исправить-->
-        <Grid Name="ToolBar" Grid.Row="0" MouseDown="ToolBar_MouseDown">
+        <Grid Name="ToolBar" Grid.Row="0">
             <Polygon Fill="Gray" Opacity="0.2"
                      Points="107,0,115,7,249,7,257,0"/>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                 <!--MouseDown(свернуть) исправить-->
-                <Image Name="MinButton" Height="15" Width="15" Margin="5" MouseDown="MinButton_MouseDown">
+                <Image Name="MinButton" Height="15" Width="15" Margin="5">
                     <Image.Style>
                         <Style TargetType="{x:Type Image}">
                             <Setter Property="Source" Value="../Source/Свернуть_не_активный.png"/>
@@ -168,7 +168,7 @@
                     </Image.Style>
                 </Image>
                 <!--MouseDown(закрытие формы) исправить-->
-                <Image Name="ExitButton" Height="15" Width="15" Margin="5,5,10,5" MouseDown="ExitButton_MouseDown">
+                <Image Name="ExitButton" Height="15" Width="15" Margin="5,5,10,5">
                     <Image.Style>
                         <Style TargetType="{x:Type Image}">
                             <Setter Property="Source" Value="../Source/Закрыть_не_активный.png"/>
@@ -186,7 +186,7 @@
         
         <!--MouseDown(перемещение формы) исправить-->
         <Grid Name="LogoContainer" Grid.Row="1">
-            <Border Background="Transparent" MouseDown="Border_MouseDown">
+            <Border Background="Transparent">
                 <Image Source="../Source/Логотип.png" Margin="35,10,3,10"/>
             </Border>
         </Grid>
