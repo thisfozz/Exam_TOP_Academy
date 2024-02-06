@@ -123,6 +123,15 @@
   <data name="ContinueWithoutLoginResources" xml:space="preserve">
     <value>Продолжить без авторизации</value>
   </data>
+  <data name="EmailRersources" xml:space="preserve">
+    <value>Эл. почта</value>
+  </data>
+  <data name="EnterLoginResources" xml:space="preserve">
+    <value>Войти</value>
+  </data>
+  <data name="ExistingAccountResources" xml:space="preserve">
+    <value>Уже есть учетная запись?</value>
+  </data>
   <data name="HelpMeResources" xml:space="preserve">
     <value>Мне нужна помощь</value>
   </data>
@@ -135,8 +144,14 @@
   <data name="InputPasswordResources" xml:space="preserve">
     <value>Пароль</value>
   </data>
+  <data name="LoginResources" xml:space="preserve">
+    <value>Логин</value>
+  </data>
   <data name="RegisterOnResources" xml:space="preserve">
     <value>Нет аккаунта? Зарегистрируйтесь</value>
+  </data>
+  <data name="RegistrationResources" xml:space="preserve">
+    <value>Зарегистрироваться</value>
   </data>
   <data name="SettingsResources" xml:space="preserve">
     <value>Настройки</value>
