@@ -126,11 +126,17 @@
   <data name="HelpMeResources" xml:space="preserve">
     <value>Help Me</value>
   </data>
+  <data name="HintToolTipResources" xml:space="preserve">
+    <value>You will be automatically logged in the app starts until you log in from somewhere else.</value>
+  </data>
   <data name="InputLoginOrEmailResources" xml:space="preserve">
     <value>Login or Email</value>
   </data>
   <data name="InputPasswordResources" xml:space="preserve">
     <value>Password</value>
+  </data>
+  <data name="RegisterOnResources" xml:space="preserve">
+    <value>Create Account</value>
   </data>
   <data name="SettingsResources" xml:space="preserve">
     <value>Settings</value>

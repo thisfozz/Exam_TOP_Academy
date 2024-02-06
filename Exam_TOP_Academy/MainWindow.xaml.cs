@@ -63,4 +63,16 @@ public partial class MainWindow : Window
             SettingsGrid.Visibility = Visibility.Hidden;
         }
     }
+
+    private void PasswordBox_PasswordChanged(object sender, RoutedEventArgs e)
+    {
+        if(PasswordForm.Password.Length > 0)
+        {
+            PasswordWaterMark.Visibility = Visibility.Collapsed;
+        }
+        else
+        {
+            PasswordWaterMark.Visibility = Visibility.Visible;
+        }
+    }
 }

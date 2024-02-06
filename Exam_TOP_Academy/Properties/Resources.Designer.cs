@@ -88,6 +88,15 @@ namespace Exam_TOP_Academy.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на You will be automatically logged in the app starts until you log in from somewhere else..
+        /// </summary>
+        public static string HintToolTipResources {
+            get {
+                return ResourceManager.GetString("HintToolTipResources", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Login or Email.
         /// </summary>
         public static string InputLoginOrEmailResources {
@@ -102,6 +111,15 @@ namespace Exam_TOP_Academy.Properties {
         public static string InputPasswordResources {
             get {
                 return ResourceManager.GetString("InputPasswordResources", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Create Account.
+        /// </summary>
+        public static string RegisterOnResources {
+            get {
+                return ResourceManager.GetString("RegisterOnResources", resourceCulture);
             }
         }
         

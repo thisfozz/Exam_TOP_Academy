@@ -126,11 +126,17 @@
   <data name="HelpMeResources" xml:space="preserve">
     <value>Мне нужна помощь</value>
   </data>
+  <data name="HintToolTipResources" xml:space="preserve">
+    <value>Вход в приложение будет осущесвляться автоматически, пока вы не смените пользователя</value>
+  </data>
   <data name="InputLoginOrEmailResources" xml:space="preserve">
     <value>Эл.почта или логин</value>
   </data>
   <data name="InputPasswordResources" xml:space="preserve">
     <value>Пароль</value>
+  </data>
+  <data name="RegisterOnResources" xml:space="preserve">
+    <value>Нет аккаунта? Зарегистрируйтесь</value>
   </data>
   <data name="SettingsResources" xml:space="preserve">
     <value>Настройки</value>

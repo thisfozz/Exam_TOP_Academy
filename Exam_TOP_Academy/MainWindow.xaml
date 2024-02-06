@@ -133,6 +133,50 @@
         </Style>
 
 
+        <Style x:Key="PasswordBoxStyle" TargetType="PasswordBox">
+            <Setter Property="Background" Value="#958cca"/>
+            <Setter Property="Height" Value="35"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="13"/>
+            <Setter Property="BorderBrush" Value="Black"/>
+            <Setter Property="Padding" Value="10,0,0,0"/>
+            <EventSetter Event="PasswordChanged" Handler="PasswordBox_PasswordChanged"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="PasswordBox">
+                        <Grid x:Name="root" Height="{TemplateBinding Height}" Width="{TemplateBinding Width}" SnapsToDevicePixels="True">
+                            <Border x:Name="Background" BorderThickness="1" CornerRadius="2" 
+                                    Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}"/>
+                            <ScrollViewer x:Name="PART_ContentHost" BorderThickness="0" Padding="{TemplateBinding Padding}" Background="{x:Null}"
+                                          TextElement.Foreground="{TemplateBinding Foreground}"/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="BorderBrush" Value="#9a92ad"/>
+                            </Trigger>
+                            <Trigger Property="IsFocused" Value="True">
+                                <Setter Property="BorderBrush" Value="#FF1D578C"/>
+                                <Setter Property="Background" Value="#837ccc"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="ToolTipStyle" TargetType="ToolTip">
+            <Setter Property="Background" Value="#423881"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderBrush" Value="Black"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="FontSize" Value="13"/>
+            <Setter Property="HorizontalOffset" Value="10"/>
+            <Setter Property="VerticalOffset" Value="10"/>
+        </Style>
+
+
+
     </Window.Resources>
     <Grid Name="MainGrid">
         <Grid.RowDefinitions>
@@ -228,18 +272,10 @@
                 </Style>
             </TextBlock.Style>
         </TextBlock>
-        <TextBox x:Name="PasswordForm" Grid.Row="2" Style="{StaticResource TextBox}" Margin="25,140,25,0" VerticalAlignment="Top"/>
-        <TextBlock IsHitTestVisible="False" FontSize="14" Text="{x:Static resource:Resources.InputPasswordResources}" Grid.Row="2" Margin="37,148,0,0" VerticalAlignment="Top">
-            <TextBlock.Style>
-                <Style TargetType="{x:Type TextBlock}">
-                    <Setter Property="Visibility" Value="Collapsed"/>
-                    <Style.Triggers>
-                        <DataTrigger Binding="{Binding Text, ElementName=PasswordForm}" Value="">
-                            <Setter Property="Visibility" Value="Visible"/>
-                        </DataTrigger>
-                    </Style.Triggers>
-                </Style>
-            </TextBlock.Style>
+
+        <PasswordBox x:Name="PasswordForm" Grid.Row="2" Style="{StaticResource PasswordBoxStyle}" Margin="25,140,25,0" VerticalAlignment="Top"/>
+        <TextBlock Grid.Row="2" x:Name="PasswordWaterMark" IsHitTestVisible="False" FontSize="14" 
+                   Text="{x:Static resource:Resources.InputPasswordResources}" Margin="37,148,0,0" VerticalAlignment="Top">
         </TextBlock>
 
         <ToggleButton Name="OnlineTGB" Grid.Row="2" Height="30" Width="140" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="25,195,0,0" 
@@ -295,8 +331,15 @@
             </ToggleButton.Template>
         </ToggleButton>
         <Image Grid.Row="2" Width="15" Height="15" 
-               VerticalAlignment="Center" HorizontalAlignment="Center" 
-               Margin="-20,110,10,0" Source="Source/Информация.png"></Image>
+       VerticalAlignment="Center" HorizontalAlignment="Center" 
+       Margin="-20,110,10,0" Source="Source/Информация.png">
+            <Image.ToolTip>
+                <ToolTip Content="{x:Static resource:Resources.HintToolTipResources}" Style="{StaticResource ToolTipStyle}" />
+            </Image.ToolTip>
+            <ToolTipService.InitialShowDelay>
+                100
+            </ToolTipService.InitialShowDelay>
+        </Image>
 
         <Border x:Name="AuthorizationButton" Grid.Row="2" Height="30"
                 Margin="25,15,25,-200" Background="Black">
@@ -307,5 +350,33 @@
             </Border.Style>
             <Button Content="{x:Static resource:Resources.AuthorizationResources}" FontSize="16" Foreground="White" Style="{StaticResource AuthorizationButton}"/>
         </Border>
-    </Grid>
+        <Polygon Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Bottom" Stroke="Gray"
+                 Points="0,0,350,0" Margin="0,0,-5,0"/>
+
+        <TextBlock Grid.Row="3" Text="{x:Static resource:Resources.RegisterOnResources}" 
+                   HorizontalAlignment="Center" VerticalAlignment="Center"
+                   FontSize="16" FontWeight="DemiBold">
+            <TextBlock.Style>
+                <Style TargetType="{x:Type TextBlock}">
+                    <Setter Property="Foreground" Value="#bdb8e0"/>
+                    <Style.Triggers>
+                        <EventTrigger RoutedEvent="MouseEnter">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ColorAnimation Storyboard.TargetProperty="Foreground.Color" To="White" Duration="0:0:0.2"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="MouseLeave">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ColorAnimation Storyboard.TargetProperty="Foreground.Color" To="#bdb8e0" Duration="0:0:0.2"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBlock.Style>
+        </TextBlock>
+        </Grid>
 </Window>
