@@ -194,7 +194,8 @@
        VerticalAlignment="Center" HorizontalAlignment="Center" 
        Margin="-15,110,10,0" Source="../Source/Информация.png">
             <Image.ToolTip>
-                <ToolTip Content="{x:Static resource:Resources.HintToolTipResources}" Style="{StaticResource ToolTipStyle}" />
+                <ToolTip Content="{x:Static resource:Resources.HintToolTipResources}" 
+                         Style="{StaticResource ToolTipStyle}" />
             </Image.ToolTip>
             <ToolTipService.InitialShowDelay>
                 100

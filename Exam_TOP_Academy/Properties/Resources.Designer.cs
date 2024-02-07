@@ -142,6 +142,15 @@ namespace Exam_TOP_Academy.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Language.
+        /// </summary>
+        public static string LanguageResources {
+            get {
+                return ResourceManager.GetString("LanguageResources", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Login.
         /// </summary>
         public static string LoginResources {
