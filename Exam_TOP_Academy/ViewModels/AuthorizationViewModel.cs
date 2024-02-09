@@ -7,7 +7,6 @@ using System.Windows;
 using System.Windows.Input;
 
 namespace Exam_TOP_Academy.ViewModels;
-
 public class AuthorizationViewModel : INotifyPropertyChanged
 {
     public ICommand OpenSettingsGridCommand { get; }

@@ -5,7 +5,6 @@ using System.Windows.Input;
 using System.Globalization;
 
 namespace Exam_TOP_Academy.ViewModels;
-
 public class LanguageSelectionViewModel : INotifyPropertyChanged
 {
     public ICommand CloseFormCommand { get; }
@@ -43,7 +42,7 @@ public class LanguageSelectionViewModel : INotifyPropertyChanged
     public LanguageSelectionViewModel()
     {
         CloseFormCommand = new DelegateCommand(CloseForm, _ => true);
-        DoneChangeLanguageCommand = new DelegateCommand(ChangeLanguage, _ => true);
+        //DoneChangeLanguageCommand = new DelegateCommand(ChangeLanguage, _ => true);
     }
 
     private void CloseForm(object obj)
@@ -56,34 +55,34 @@ public class LanguageSelectionViewModel : INotifyPropertyChanged
         }
     }
 
-    private void ChangeLanguage(object obj)
-    {
-        if (SelectedLanguageRussian)
-        {
-            ChangeLanguage("ru-RU");
-        }
-        else if (SelectedLanguageEnglish)
-        {
-            ChangeLanguage("en-US");
-        }
-    }
-    private void ChangeLanguage(string cultureCode)
-    {
-        try
-        {
-            CultureInfo newCulture = new CultureInfo(cultureCode);
-            Thread.CurrentThread.CurrentCulture = newCulture;
-            Thread.CurrentThread.CurrentUICulture = newCulture;
-            // Обновить еще и родительский поток
+    //private void ChangeLanguage(object obj)
+    //{
+    //    if (SelectedLanguageRussian)
+    //    {
+    //        ChangeLanguage("ru-RU");
+    //    }
+    //    else if (SelectedLanguageEnglish)
+    //    {
+    //        ChangeLanguage("en-US");
+    //    }
+    //}
+    //private void ChangeLanguage(string cultureCode)
+    //{
+    //    try
+    //    {
+    //        CultureInfo newCulture = new CultureInfo(cultureCode);
+    //        Thread.CurrentThread.CurrentCulture = newCulture;
+    //        Thread.CurrentThread.CurrentUICulture = newCulture;
+    //        // Обновить еще и родительский поток
 
-            CloseForm(this);
+    //        CloseForm(this);
 
-        }
-        catch (Exception ex)
-        {
-            MessageBox.Show($"Error changing language: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-        }
-    }
+    //    }
+    //    catch (Exception ex)
+    //    {
+    //        MessageBox.Show($"Error changing language: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+    //    }
+    //}
 
     public event PropertyChangedEventHandler PropertyChanged;
 

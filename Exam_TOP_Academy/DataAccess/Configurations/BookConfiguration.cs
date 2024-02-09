@@ -3,7 +3,6 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Exam_TOP_Academy.DataAccess.Configurations;
-
 internal class BookConfiguration : IEntityTypeConfiguration<Book>
 {
     public void Configure(EntityTypeBuilder<Book> builder)

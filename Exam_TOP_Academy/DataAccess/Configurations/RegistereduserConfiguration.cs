@@ -3,7 +3,6 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Exam_TOP_Academy.DataAccess.Configurations;
-
 internal class RegistereduserConfiguration : IEntityTypeConfiguration<Registereduser>
 {
     public void Configure(EntityTypeBuilder<Registereduser> builder)

@@ -17,20 +17,15 @@ public class AesEncryption
 
             ICryptoTransform encryptor = aesAlg.CreateEncryptor(aesAlg.Key, aesAlg.IV);
 
-            using (MemoryStream msEncrypt = new MemoryStream())
-            {
-                using (CryptoStream csEncrypt = new CryptoStream(msEncrypt, encryptor, CryptoStreamMode.Write))
-                {
-                    using (StreamWriter swEncrypt = new StreamWriter(csEncrypt))
-                    {
-                        swEncrypt.Write(password);
-                    }
-                }
+            using MemoryStream msEncrypt = new MemoryStream();
+            using CryptoStream csEncrypt = new CryptoStream(msEncrypt, encryptor, CryptoStreamMode.Write);
+            using StreamWriter swEncrypt = new StreamWriter(csEncrypt);
 
-                byte[] encryptedBytes = msEncrypt.ToArray();
-                string encryptedPassword = Convert.ToBase64String(encryptedBytes);
-                return encryptedPassword;
-            }
+            swEncrypt.Write(password);
+
+            byte[] encryptedBytes = msEncrypt.ToArray();
+            string encryptedPassword = Convert.ToBase64String(encryptedBytes);
+            return encryptedPassword;
         }
     }
 
@@ -45,17 +40,12 @@ public class AesEncryption
 
             ICryptoTransform decryptor = aesAlg.CreateDecryptor(aesAlg.Key, aesAlg.IV);
 
-            using (MemoryStream msDecrypt = new MemoryStream(cipherText))
-            {
-                using (CryptoStream csDecrypt = new CryptoStream(msDecrypt, decryptor, CryptoStreamMode.Read))
-                {
-                    using (StreamReader srDecrypt = new StreamReader(csDecrypt))
-                    {
-                        string decryptedPassword = srDecrypt.ReadToEnd();
-                        return decryptedPassword;
-                    }
-                }
-            }
+            using MemoryStream msDecrypt = new MemoryStream(cipherText);
+            using CryptoStream csDecrypt = new CryptoStream(msDecrypt, decryptor, CryptoStreamMode.Read);
+            using StreamReader srDecrypt = new StreamReader(csDecrypt);
+
+            string decryptedPassword = srDecrypt.ReadToEnd();
+            return decryptedPassword;
         }
     }
 }
