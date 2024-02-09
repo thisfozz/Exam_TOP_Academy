@@ -221,28 +221,7 @@
 
         <TextBlock Grid.Row="3" Text="{x:Static resource:Resources.RegisterOnResources}" 
                    HorizontalAlignment="Center" VerticalAlignment="Center"
-                   FontSize="16" FontWeight="DemiBold">
-            <TextBlock.Style>
-                <Style TargetType="{x:Type TextBlock}">
-                    <Setter Property="Foreground" Value="#bdb8e0"/>
-                    <Style.Triggers>
-                        <EventTrigger RoutedEvent="MouseEnter">
-                            <BeginStoryboard>
-                                <Storyboard>
-                                    <ColorAnimation Storyboard.TargetProperty="Foreground.Color" To="White" Duration="0:0:0.2"/>
-                                </Storyboard>
-                            </BeginStoryboard>
-                        </EventTrigger>
-                        <EventTrigger RoutedEvent="MouseLeave">
-                            <BeginStoryboard>
-                                <Storyboard>
-                                    <ColorAnimation Storyboard.TargetProperty="Foreground.Color" To="#bdb8e0" Duration="0:0:0.2"/>
-                                </Storyboard>
-                            </BeginStoryboard>
-                        </EventTrigger>
-                    </Style.Triggers>
-                </Style>
-            </TextBlock.Style>
+                   FontSize="16" FontWeight="DemiBold" Style="{StaticResource TextBlockStyle}">
             <TextBlock.InputBindings>
                 <MouseBinding Gesture="LeftClick" Command="{Binding OpenRegistrationFormCommand}"/>
             </TextBlock.InputBindings>

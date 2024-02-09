@@ -5,13 +5,15 @@ using System.Windows.Input;
 using System.IO;
 using Newtonsoft.Json;
 using Exam_TOP_Academy.Settings;
+using Exam_TOP_Academy.View;
 
 namespace Exam_TOP_Academy.ViewModels;
 public class LanguageSelectionViewModel : INotifyPropertyChanged
 {
+    private string filePath = @"appsettings.json";
+
     public ICommand CloseFormCommand { get; }
     public ICommand DoneChangeLanguageCommand { get; }
-    private string filePath = @"appsettings.json";
 
     private bool _selectedLanguageRussian;
     private bool _selectedLanguageEnglish;
@@ -28,7 +30,6 @@ public class LanguageSelectionViewModel : INotifyPropertyChanged
             }
         }
     }
-
     public bool SelectedLanguageEnglish
     {
         get { return _selectedLanguageEnglish; }
@@ -76,13 +77,14 @@ public class LanguageSelectionViewModel : INotifyPropertyChanged
                 string jsonData = JsonConvert.SerializeObject(mainSettings, Formatting.Indented);
                 File.WriteAllText(filePath, jsonData);
             }
-        }catch (Exception ex)
+        }
+        catch (Exception ex)
         {
             MessageBox.Show(ex.Message);
         }
     }
 
-    public event PropertyChangedEventHandler PropertyChanged;
+    public event PropertyChangedEventHandler? PropertyChanged;
 
     protected virtual void OnPropertyChanged(string propertyName)
     {

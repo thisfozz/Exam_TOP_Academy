@@ -1,9 +1,88 @@
 ﻿<Window x:Class="Exam_TOP_Academy.View.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Height="450" Width="800">
+        xmlns:resource="clr-namespace:Exam_TOP_Academy.Properties"
+        Height="1000" Width="1600">
+
+    <Window.Background>
+        <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+            <GradientStop Color="#2f285c" Offset="0.2"/>
+            <GradientStop Color="#3f367c" Offset="0.5"/>
+            <GradientStop Color="#50449c" Offset="1.4"/>
+        </LinearGradientBrush>
+    </Window.Background>
+
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../Styles/Styles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+
     <Grid>
-        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center"
-                   Text="ГЛАВНОЕ МЕНЮ....В РАЗРАБОТКЕ" FontSize="24"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1200"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <StackPanel Grid.Row="0" Orientation="Horizontal" VerticalAlignment="Center">
+                <RadioButton x:Name="MainButton" Style="{StaticResource MenuButtonStyle}" Content="ГЛАВНАЯ" Width="250"/>
+                <RadioButton x:Name="StockButton" Style="{StaticResource MenuButtonStyle}" Content="АКЦИИ" Width="250"/>
+                <RadioButton x:Name="BookkeepingButton" Style="{StaticResource MenuButtonStyle}" Content="КНИЖНЫЙ УЧЕТ" Width="350"/>
+            </StackPanel>
+
+            <ContentControl Grid.Row="1" BorderBrush="Black" BorderThickness="1">
+                <ContentControl.Style>
+                    <Style TargetType="ContentControl">
+                        <Setter Property="Content">
+                            <Setter.Value>
+                                <Grid>
+                                    <TextBlock Text="ЭТО ГЛАВНАЯ" FontSize="30"/>
+                                </Grid>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding IsChecked, ElementName=MainButton}" Value="True">
+                                <Setter Property="Content">
+                                    <Setter.Value>
+                                        <Grid>
+                                            <!-- Grid для главной -->
+                                            <TextBlock Text="ЭТО ГЛАВНАЯ" FontSize="30" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                        </Grid>
+                                    </Setter.Value>
+                                </Setter>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding IsChecked, ElementName=StockButton}" Value="True">
+                                <Setter Property="Content">
+                                    <Setter.Value>
+                                        <Grid>
+                                            <!-- Grid акций -->
+                                            <TextBlock Text="ЭТО АКЦИИ" FontSize="30" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                        </Grid>
+                                    </Setter.Value>
+                                </Setter>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding IsChecked, ElementName=BookkeepingButton}" Value="True">
+                                <Setter Property="Content">
+                                    <Setter.Value>
+                                        <Grid>
+                                            <!-- Grid для книжного учета -->
+                                            <TextBlock Text="ЭТО КНИЖНЫЙ УЧЕТ" FontSize="30" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                        </Grid>
+                                    </Setter.Value>
+                                </Setter>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </ContentControl.Style>
+            </ContentControl>
+
+        </Grid>
     </Grid>
 </Window>
