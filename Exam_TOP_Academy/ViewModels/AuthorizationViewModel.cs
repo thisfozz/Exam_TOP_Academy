@@ -1,7 +1,8 @@
-﻿using Command_;
+﻿using AesEncryptionNamespace;
+using Command_;
+using Exam_TOP_Academy.DataAccess.Contexts;
 using Exam_TOP_Academy.View;
 using System.ComponentModel;
-using System.Globalization;
 using System.Windows;
 using System.Windows.Input;
 
@@ -16,6 +17,36 @@ public class AuthorizationViewModel : INotifyPropertyChanged
     public ICommand MovingFormCommand { get; }
     public ICommand OpenRegistrationFormCommand { get; }
     public ICommand OpenSettingsFormCommand { get; }
+
+    private string _loginOrEmail;
+
+    public string LoginOrEmail
+    {
+        get { return _loginOrEmail; }
+        set
+        {
+            if (_loginOrEmail != value)
+            {
+                _loginOrEmail = value;
+                OnPropertyChanged(nameof(LoginOrEmail));
+            }
+        }
+    }
+
+    private string _password;
+
+    public string Password
+    {
+        get { return _password; }
+        set
+        {
+            if (_password != value)
+            {
+                _password = value;
+                OnPropertyChanged(nameof(Password));
+            }
+        }
+    }
 
     public AuthorizationViewModel()
     {
@@ -51,9 +82,37 @@ public class AuthorizationViewModel : INotifyPropertyChanged
 
     private void Authorization(object obj)
     {
-        // Code...Перекидываю на главное окно
-        MessageBox.Show("Авторизация");
+        using var context = new BookStoreContext();
+        var user = context.Registeredusers.FirstOrDefault(u => u.Login == LoginOrEmail || u.Email == LoginOrEmail);
+
+        if (user != null)
+        {
+            var aesEncryption = new AesEncryption();
+            string decryptedPassword = aesEncryption.Decrypt(user.Password);
+
+            if (decryptedPassword == Password)
+            {
+                var mainWindow = new MainWindow();
+
+                mainWindow.Left = Application.Current.MainWindow.Left;
+                mainWindow.Top = Application.Current.MainWindow.Top;
+                
+                Application.Current.MainWindow.Close();
+                Thread.Sleep(200);
+                Application.Current.MainWindow = mainWindow;
+                Application.Current.MainWindow.Show();
+            }
+            else
+            {
+                MessageBox.Show("Неверный логин или пароль");
+            }
+        }
+        else
+        {
+            MessageBox.Show("Указанный пользователь не найден");
+        }
     }
+
 
     private void CloseForm(object obj)
     {

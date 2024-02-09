@@ -1,4 +1,7 @@
-﻿using Command_;
+﻿using AesEncryptionNamespace;
+using Command_;
+using Exam_TOP_Academy.DataAccess.Contexts;
+using Exam_TOP_Academy.DataAccess.Entities;
 using Exam_TOP_Academy.View;
 using System.ComponentModel;
 using System.Windows;
@@ -11,6 +14,52 @@ public class RegistrationViewModel : INotifyPropertyChanged
     public ICommand RollUpFormCommand { get; }
     public ICommand MovingFormCommand { get; }
     public ICommand CloseFormCommand { get; }
+    public ICommand RegistrationUserCommand { get; }
+
+    private string _email;
+
+    public string Email
+    {
+        get { return _email; }
+        set
+        {
+            if (_email != value)
+            {
+                _email = value;
+                OnPropertyChanged(nameof(Email));
+            }
+        }
+    }
+
+    private string _login;
+
+    public string Login
+    {
+        get { return _login; }
+        set
+        {
+            if (_login != value)
+            {
+                _login = value;
+                OnPropertyChanged(nameof(Login));
+            }
+        }
+    }
+
+    private string _password;
+
+    public string Password
+    {
+        get { return _password; }
+        set
+        {
+            if (_password != value)
+            {
+                _password = value;
+                OnPropertyChanged(nameof(Password));
+            }
+        }
+    }
 
     public RegistrationViewModel()
     {
@@ -18,6 +67,7 @@ public class RegistrationViewModel : INotifyPropertyChanged
         RollUpFormCommand = new DelegateCommand(RollUpForm, _ => true);
         MovingFormCommand = new DelegateCommand(MovingForm, _ => true);
         CloseFormCommand = new DelegateCommand(CloseForm, _ => true);
+        RegistrationUserCommand = new DelegateCommand(RegistrationUser, _ => true);
     }
 
     private void OpenAuthorization(object obj)
@@ -45,6 +95,22 @@ public class RegistrationViewModel : INotifyPropertyChanged
     private void MovingForm(object obj)
     {
         Application.Current.MainWindow.DragMove();
+    }
+    private void RegistrationUser(object obj)
+    {
+        var aesEncryption = new AesEncryption();
+        string encryptedPassword = aesEncryption.Encrypt(Password);
+        var newUser = new Registereduser
+        {
+            Email = Email,
+            Login = Login,
+            Password = encryptedPassword
+        };
+
+        using (var context = new BookStoreContext())
+        {
+            context.AddUser(newUser);
+        }
     }
 
     public event PropertyChangedEventHandler PropertyChanged;
