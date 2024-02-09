@@ -7,6 +7,7 @@ namespace Exam_TOP_Academy
     {
         protected override void OnStartup(StartupEventArgs e)
         {
+            //var langCode = Exam_TOP_Academy.Properties.Settings.Default.LanguageCode;
             base.OnStartup(e);
             var mainWindow = new AuthorizationWindow();
             mainWindow.Show();

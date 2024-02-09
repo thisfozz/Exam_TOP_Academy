@@ -109,7 +109,9 @@
                 </StackPanel>
             </Grid>
         </Grid>
-        <TextBox x:Name="LoginForm" Grid.Row="2" Style="{StaticResource TextBox}" Margin="25,80,25,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="LoginForm" Grid.Row="2" Style="{StaticResource TextBox}" Margin="25,80,25,0" 
+                 VerticalAlignment="Top"
+                 Text="{Binding LoginOrEmail, UpdateSourceTrigger=PropertyChanged}"/>
         <TextBlock IsHitTestVisible="False" FontSize="14" Text="{x:Static resource:Resources.InputLoginOrEmailResources}" Grid.Row="2" Margin="37,87,0,0" 
                    VerticalAlignment="Top">
             <TextBlock.Style>
@@ -124,7 +126,9 @@
             </TextBlock.Style>
         </TextBlock>
 
-        <TextBox x:Name="PasswordForm" Grid.Row="2" Style="{StaticResource TextBox}" Margin="25,140,25,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="PasswordForm" Grid.Row="2" Style="{StaticResource TextBox}" Margin="25,140,25,0" 
+                 VerticalAlignment="Top"
+                 Text="{Binding Password, UpdateSourceTrigger=PropertyChanged}"/>
         <TextBlock IsHitTestVisible="False" FontSize="14" Text="{x:Static resource:Resources.InputPasswordResources}" Grid.Row="2" Margin="37,148,0,0" VerticalAlignment="Top">
             <TextBlock.Style>
                 <Style TargetType="{x:Type TextBlock}">
