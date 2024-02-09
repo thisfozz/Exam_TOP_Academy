@@ -144,6 +144,9 @@
   <data name="InputPasswordResources" xml:space="preserve">
     <value>Password</value>
   </data>
+  <data name="LanguageResources" xml:space="preserve">
+    <value>Language</value>
+  </data>
   <data name="LoginResources" xml:space="preserve">
     <value>Login</value>
   </data>

@@ -1,6 +1,7 @@
 ﻿using Command_;
 using Exam_TOP_Academy.View;
 using System.ComponentModel;
+using System.Globalization;
 using System.Windows;
 using System.Windows.Input;
 
@@ -81,9 +82,14 @@ public class AuthorizationViewModel : INotifyPropertyChanged
         Application.Current.MainWindow.Show();
     }
 
-    private void OpenSettingsForm(object obj)
+    private void OpenSettingsForm(object parameter)
     {
-        MessageBox.Show("Вы зашли в настройки!");
+        LanguageSelectionDialog languageDialog = new LanguageSelectionDialog();
+
+        languageDialog.Left = Application.Current.MainWindow.Left + (Application.Current.MainWindow.Width - languageDialog.Width) / 2;
+        languageDialog.Top = Application.Current.MainWindow.Top + (Application.Current.MainWindow.Height - languageDialog.Height) / 2;
+
+        bool? result = languageDialog.ShowDialog();
     }
 
     public event PropertyChangedEventHandler PropertyChanged;
