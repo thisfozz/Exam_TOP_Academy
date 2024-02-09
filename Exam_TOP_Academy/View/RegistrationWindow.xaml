@@ -141,11 +141,11 @@
 
         <TextBlock Grid.Row="3" Text="{x:Static resource:Resources.ExistingAccountResources}" 
                    HorizontalAlignment="Left" VerticalAlignment="Center"
-                   FontSize="16" FontWeight="DemiBold" Foreground="#bdb8e0" Margin="50,0,0,0"/>
+                   FontSize="16" FontWeight="DemiBold" Foreground="#bdb8e0" Margin="95,0,0,0"/>
 
         <TextBlock Grid.Row="3" Text="{x:Static resource:Resources.EnterLoginResources}" 
                    HorizontalAlignment="Right" VerticalAlignment="Center"
-                   FontSize="16" FontWeight="DemiBold" Margin="0,0,60,-1">
+                   FontSize="16" FontWeight="DemiBold" Margin="0,0,95,-1">
             <TextBlock.Style>
                 <Style TargetType="{x:Type TextBlock}">
                     <Setter Property="Foreground" Value="White"/>

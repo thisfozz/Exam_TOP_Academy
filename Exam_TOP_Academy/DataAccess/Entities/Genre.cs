@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace Exam_TOP_Academy.DataAccess.Entities;
-
+﻿namespace Exam_TOP_Academy.DataAccess.Entities;
 public partial class Genre
 {
     public int GenreId { get; set; }

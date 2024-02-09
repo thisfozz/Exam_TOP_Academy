@@ -1,4 +1,5 @@
 ﻿using Exam_TOP_Academy.View;
+using System.Globalization;
 using System.Windows;
 
 namespace Exam_TOP_Academy
@@ -7,7 +8,10 @@ namespace Exam_TOP_Academy
     {
         protected override void OnStartup(StartupEventArgs e)
         {
-            //var langCode = Exam_TOP_Academy.Properties.Settings.Default.LanguageCode;
+            string langCode = "ru-RU";
+            Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo(langCode);
+            Thread.CurrentThread.CurrentUICulture = new CultureInfo(langCode);
+
             base.OnStartup(e);
             var mainWindow = new AuthorizationWindow();
             mainWindow.Show();

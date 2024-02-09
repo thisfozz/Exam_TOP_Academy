@@ -3,7 +3,6 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Exam_TOP_Academy.DataAccess.Configurations;
-
 internal class PromotionConfiguration : IEntityTypeConfiguration<Promotion>
 {
     public void Configure(EntityTypeBuilder<Promotion> builder)

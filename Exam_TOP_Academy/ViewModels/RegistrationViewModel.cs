@@ -107,10 +107,19 @@ public class RegistrationViewModel : INotifyPropertyChanged
             Password = encryptedPassword
         };
 
-        using (var context = new BookStoreContext())
-        {
-            context.AddUser(newUser);
-        }
+        using var context = new BookStoreContext();
+        context.AddUser(newUser);
+
+        var mainWindow = new MainWindow();
+
+        mainWindow.Left = Application.Current.MainWindow.Left;
+        mainWindow.Top = Application.Current.MainWindow.Top;
+
+        Application.Current.MainWindow.Close();
+        Thread.Sleep(200);
+        Application.Current.MainWindow = mainWindow;
+        Application.Current.MainWindow.Show();
+
     }
 
     public event PropertyChangedEventHandler PropertyChanged;
