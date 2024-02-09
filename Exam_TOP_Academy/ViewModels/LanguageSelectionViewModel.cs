@@ -2,13 +2,16 @@
 using System.ComponentModel;
 using System.Windows;
 using System.Windows.Input;
-using System.Globalization;
+using System.IO;
+using Newtonsoft.Json;
+using Exam_TOP_Academy.Settings;
 
 namespace Exam_TOP_Academy.ViewModels;
 public class LanguageSelectionViewModel : INotifyPropertyChanged
 {
     public ICommand CloseFormCommand { get; }
     public ICommand DoneChangeLanguageCommand { get; }
+    private string filePath = @"appsettings.json";
 
     private bool _selectedLanguageRussian;
     private bool _selectedLanguageEnglish;
@@ -42,7 +45,7 @@ public class LanguageSelectionViewModel : INotifyPropertyChanged
     public LanguageSelectionViewModel()
     {
         CloseFormCommand = new DelegateCommand(CloseForm, _ => true);
-        //DoneChangeLanguageCommand = new DelegateCommand(ChangeLanguage, _ => true);
+        DoneChangeLanguageCommand = new DelegateCommand(ChangeLanguage, _ => true);
     }
 
     private void CloseForm(object obj)
@@ -55,34 +58,29 @@ public class LanguageSelectionViewModel : INotifyPropertyChanged
         }
     }
 
-    //private void ChangeLanguage(object obj)
-    //{
-    //    if (SelectedLanguageRussian)
-    //    {
-    //        ChangeLanguage("ru-RU");
-    //    }
-    //    else if (SelectedLanguageEnglish)
-    //    {
-    //        ChangeLanguage("en-US");
-    //    }
-    //}
-    //private void ChangeLanguage(string cultureCode)
-    //{
-    //    try
-    //    {
-    //        CultureInfo newCulture = new CultureInfo(cultureCode);
-    //        Thread.CurrentThread.CurrentCulture = newCulture;
-    //        Thread.CurrentThread.CurrentUICulture = newCulture;
-    //        // Обновить еще и родительский поток
+    private void ChangeLanguage(object obj)
+    {
+        try
+        {
+            if (File.Exists(filePath))
+            {
+                string langCode = SelectedLanguageRussian ? "ru-RU" : "en-US";
+                MainSettings mainSettings = new MainSettings
+                {
+                    languageSettings = new LanguageSettings
+                    {
+                        LangCode = langCode
+                    }
+                };
 
-    //        CloseForm(this);
-
-    //    }
-    //    catch (Exception ex)
-    //    {
-    //        MessageBox.Show($"Error changing language: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-    //    }
-    //}
+                string jsonData = JsonConvert.SerializeObject(mainSettings, Formatting.Indented);
+                File.WriteAllText(filePath, jsonData);
+            }
+        }catch (Exception ex)
+        {
+            MessageBox.Show(ex.Message);
+        }
+    }
 
     public event PropertyChangedEventHandler PropertyChanged;
 
