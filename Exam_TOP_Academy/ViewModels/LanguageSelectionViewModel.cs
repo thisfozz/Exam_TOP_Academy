@@ -2,11 +2,16 @@
 using System.ComponentModel;
 using System.Windows;
 using System.Windows.Input;
-using System.Globalization;
+using System.IO;
+using Newtonsoft.Json;
+using Exam_TOP_Academy.Settings;
+using Exam_TOP_Academy.View;
 
 namespace Exam_TOP_Academy.ViewModels;
 public class LanguageSelectionViewModel : INotifyPropertyChanged
 {
+    private string filePath = @"appsettings.json";
+
     public ICommand CloseFormCommand { get; }
     public ICommand DoneChangeLanguageCommand { get; }
 
@@ -25,7 +30,6 @@ public class LanguageSelectionViewModel : INotifyPropertyChanged
             }
         }
     }
-
     public bool SelectedLanguageEnglish
     {
         get { return _selectedLanguageEnglish; }
@@ -42,7 +46,7 @@ public class LanguageSelectionViewModel : INotifyPropertyChanged
     public LanguageSelectionViewModel()
     {
         CloseFormCommand = new DelegateCommand(CloseForm, _ => true);
-        //DoneChangeLanguageCommand = new DelegateCommand(ChangeLanguage, _ => true);
+        DoneChangeLanguageCommand = new DelegateCommand(ChangeLanguage, _ => true);
     }
 
     private void CloseForm(object obj)
@@ -55,36 +59,32 @@ public class LanguageSelectionViewModel : INotifyPropertyChanged
         }
     }
 
-    //private void ChangeLanguage(object obj)
-    //{
-    //    if (SelectedLanguageRussian)
-    //    {
-    //        ChangeLanguage("ru-RU");
-    //    }
-    //    else if (SelectedLanguageEnglish)
-    //    {
-    //        ChangeLanguage("en-US");
-    //    }
-    //}
-    //private void ChangeLanguage(string cultureCode)
-    //{
-    //    try
-    //    {
-    //        CultureInfo newCulture = new CultureInfo(cultureCode);
-    //        Thread.CurrentThread.CurrentCulture = newCulture;
-    //        Thread.CurrentThread.CurrentUICulture = newCulture;
-    //        // Обновить еще и родительский поток
+    private void ChangeLanguage(object obj)
+    {
+        try
+        {
+            if (File.Exists(filePath))
+            {
+                string langCode = SelectedLanguageRussian ? "ru-RU" : "en-US";
+                MainSettings mainSettings = new MainSettings
+                {
+                    languageSettings = new LanguageSettings
+                    {
+                        LangCode = langCode
+                    }
+                };
 
-    //        CloseForm(this);
+                string jsonData = JsonConvert.SerializeObject(mainSettings, Formatting.Indented);
+                File.WriteAllText(filePath, jsonData);
+            }
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show(ex.Message);
+        }
+    }
 
-    //    }
-    //    catch (Exception ex)
-    //    {
-    //        MessageBox.Show($"Error changing language: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-    //    }
-    //}
-
-    public event PropertyChangedEventHandler PropertyChanged;
+    public event PropertyChangedEventHandler? PropertyChanged;
 
     protected virtual void OnPropertyChanged(string propertyName)
     {
