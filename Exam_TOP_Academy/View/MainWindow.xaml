@@ -2,7 +2,7 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:resource="clr-namespace:Exam_TOP_Academy.Properties"
-        Height="1000" Width="1600">
+        Height="1000" Width="1600" WindowStartupLocation="CenterOwner" WindowStyle="None" ResizeMode="NoResize">
 
     <Window.Background>
         <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
@@ -32,21 +32,13 @@
             </Grid.RowDefinitions>
 
             <StackPanel Grid.Row="0" Orientation="Horizontal" VerticalAlignment="Center">
-                <RadioButton x:Name="MainButton" Style="{StaticResource MenuButtonStyle}" Content="ГЛАВНАЯ" Width="250"/>
-                <RadioButton x:Name="StockButton" Style="{StaticResource MenuButtonStyle}" Content="АКЦИИ" Width="250"/>
-                <RadioButton x:Name="BookkeepingButton" Style="{StaticResource MenuButtonStyle}" Content="КНИЖНЫЙ УЧЕТ" Width="350"/>
+                <RadioButton x:Name="MainButton" Style="{StaticResource MainWindowButtonStyle}" Content="ГЛАВНАЯ" Width="250" FontWeight="DemiBold"/>
+                <RadioButton x:Name="BookkeepingButton" Style="{StaticResource MainWindowButtonStyle}" Content="КНИЖНЫЙ УЧЕТ" Width="350" FontWeight="DemiBold"/>
             </StackPanel>
 
             <ContentControl Grid.Row="1" BorderBrush="Black" BorderThickness="1">
                 <ContentControl.Style>
                     <Style TargetType="ContentControl">
-                        <Setter Property="Content">
-                            <Setter.Value>
-                                <Grid>
-                                    <TextBlock Text="ЭТО ГЛАВНАЯ" FontSize="30"/>
-                                </Grid>
-                            </Setter.Value>
-                        </Setter>
                         <Style.Triggers>
                             <DataTrigger Binding="{Binding IsChecked, ElementName=MainButton}" Value="True">
                                 <Setter Property="Content">
@@ -57,90 +49,194 @@
                                                 <ColumnDefinition Width="*"/>
                                             </Grid.ColumnDefinitions>
 
-                                            <Grid Grid.Column="0" Name="FilterGrid">
-                                                <Expander Header="Цена" Grid.Column="0" Grid.Row="0" VerticalAlignment="Top" Margin="10" FontSize="14">
-                                                    <Grid>
-                                                        <Grid.ColumnDefinitions>
-                                                            <ColumnDefinition Width="100"/>
-                                                            <ColumnDefinition Width="100"/>
-                                                        </Grid.ColumnDefinitions>
+                                            <Grid Grid.Column="0" Name="FilterGridPrice">
+                                                <TextBlock Text="Цена" FontSize="14" Foreground="White" Margin="10,0,0,0"/>
+                                                <Grid>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="100"/>
+                                                        <ColumnDefinition Width="100"/>
+                                                    </Grid.ColumnDefinitions>
 
-                                                        <Grid Grid.Column="0">
-                                                            <TextBox x:Name="BeginRange" Style="{StaticResource TextBox}" Margin="5,20,0,0" 
-                                                                     VerticalAlignment="Top" HorizontalAlignment="Left"
-                                                                     Text="{Binding SearchForm, UpdateSourceTrigger=PropertyChanged}" Height="25" Width="90"/>
-                                                            <TextBlock IsHitTestVisible="False" FontSize="13" Text="От" Margin="10,24,0,0" 
-                                                                       VerticalAlignment="Top" Width="70" HorizontalAlignment="Center">
-                                                                <TextBlock.Style>
-                                                                    <Style TargetType="{x:Type TextBlock}">
-                                                                        <Setter Property="Visibility" Value="Collapsed"/>
-                                                                        <Style.Triggers>
-                                                                            <DataTrigger Binding="{Binding Text, ElementName=BeginRange}" Value="">
-                                                                                <Setter Property="Visibility" Value="Visible"/>
-                                                                            </DataTrigger>
-                                                                        </Style.Triggers>
-                                                                    </Style>
-                                                                </TextBlock.Style>
-                                                            </TextBlock>
-                                                        </Grid>
-                                                        <Grid Grid.Column="1">
-                                                            <TextBox x:Name="EndPrice" Style="{StaticResource TextBox}" Margin="0,20,0,0" 
-                                                                     VerticalAlignment="Top" HorizontalAlignment="Left"
-                                                                     Text="{Binding SearchForm, UpdateSourceTrigger=PropertyChanged}" Height="25" Width="90"/>
-                                                            <TextBlock IsHitTestVisible="False" FontSize="13" Text="До" Margin="15,24,0,0" 
-                                                                       VerticalAlignment="Top" Width="70" HorizontalAlignment="Left">
-                                                                <TextBlock.Style>
-                                                                    <Style TargetType="{x:Type TextBlock}">
-                                                                        <Setter Property="Visibility" Value="Collapsed"/>
-                                                                        <Style.Triggers>
-                                                                            <DataTrigger Binding="{Binding Text, ElementName=EndPrice}" Value="">
-                                                                                <Setter Property="Visibility" Value="Visible"/>
-                                                                            </DataTrigger>
-                                                                        </Style.Triggers>
-                                                                    </Style>
-                                                                </TextBlock.Style>
-                                                            </TextBlock>
-                                                        </Grid>
+                                                    <Grid Grid.Column="0">
+                                                        <TextBox x:Name="BeginRangePrice" Style="{StaticResource TextBox}" Margin="10,30,0,0" 
+                                                                 VerticalAlignment="Top" HorizontalAlignment="Left"
+                                                                 Text="{Binding BeginRangePrice, UpdateSourceTrigger=PropertyChanged}" 
+                                                                 Height="25" Width="90" Foreground="Black"/>
+                                                        <TextBlock IsHitTestVisible="False" FontSize="13" Text="От" Margin="10,34,0,0" 
+                                                                   VerticalAlignment="Top" Width="70" HorizontalAlignment="Center"
+                                                                   Style="{StaticResource TextBlockStyle}">
+
+                                                        </TextBlock>
                                                     </Grid>
-                                                </Expander>
+                                                    <Grid Grid.Column="1">
+                                                        <TextBox x:Name="EndRangePrice" Style="{StaticResource TextBox}" Margin="10,30,0,0" 
+                                                                 VerticalAlignment="Top" HorizontalAlignment="Left"
+                                                                 Text="{Binding EndRangePrice, UpdateSourceTrigger=PropertyChanged}" 
+                                                                 Height="25" Width="90" Foreground="Black"/>
+                                                        <TextBlock IsHitTestVisible="False" FontSize="13" Text="До" Margin="15,34,0,0" 
+                                                                   VerticalAlignment="Top" Width="70" HorizontalAlignment="Left"
+                                                                   Style="{StaticResource TextBlockStyle}">
+                                                        </TextBlock>
+                                                    </Grid>
+                                                </Grid>
                                             </Grid>
+
+                                            <Grid Grid.Column="0" Name="FilterGridPublisherYear" Margin="0,90,0,0">
+                                                <TextBlock Text="Год публикации" FontSize="14" Foreground="White" Margin="10,0,0,0"/>
+                                                <Grid>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="100"/>
+                                                        <ColumnDefinition Width="100"/>
+                                                    </Grid.ColumnDefinitions>
+
+                                                    <Grid Grid.Column="0">
+                                                        <TextBox x:Name="BeginRangePublisherYear" Style="{StaticResource TextBox}" Margin="10,30,0,0" 
+                                                                 VerticalAlignment="Top" HorizontalAlignment="Left"
+                                                                 Text="{Binding SearchFormPublisherBeginYear, UpdateSourceTrigger=PropertyChanged}" 
+                                                                 Height="25" Width="90" Foreground="Black"/>
+                                                        <TextBlock IsHitTestVisible="False" FontSize="13" Text="От" Margin="10,34,0,0" 
+                                                                   VerticalAlignment="Top" Width="70" HorizontalAlignment="Center"
+                                                                   Style="{StaticResource TextBlockStyle}">
+                                                        </TextBlock>
+                                                    </Grid>
+                                                    <Grid Grid.Column="1">
+                                                        <TextBox x:Name="EndRangePublisherYear" Style="{StaticResource TextBox}" Margin="10,30,0,0" 
+                                                                 VerticalAlignment="Top" HorizontalAlignment="Left"
+                                                                 Text="{Binding SearchFormPublisheEndYear, UpdateSourceTrigger=PropertyChanged}" 
+                                                                 Height="25" Width="90" Foreground="Black"/>
+                                                        <TextBlock IsHitTestVisible="False" FontSize="13" Text="До" Margin="15,34,0,0" 
+                                                                   VerticalAlignment="Top" Width="70" HorizontalAlignment="Left"
+                                                                   Style="{StaticResource TextBlockStyle}">
+                                                        </TextBlock>
+                                                    </Grid>
+                                                </Grid>
+                                            </Grid>
+                                            <Grid Grid.Column="0" Name="FilterGridStatus" Margin="0,180,0,0">
+                                                <TextBlock Text="Статус" FontSize="14" Foreground="White" Margin="10,0,0,0"/>
+                                                <Grid>
+                                                    <ToggleButton Name="StatusNewBook" Grid.Row="2" Height="30" Width="140" 
+                                                                  HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,25,0,0" 
+                                                                  Content="Новинки" Foreground="#a69fab" FontSize="12" Style="{StaticResource CustomToggleButtonStyle}">
+                                                    </ToggleButton>
+                                                    <ToggleButton Name="StatusBestsellers" Grid.Row="2" Height="30" Width="140" 
+                                                                  HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,60,0,0" 
+                                                                  Content="Бестселлеры" Foreground="#a69fab" FontSize="12" Style="{StaticResource CustomToggleButtonStyle}">
+                                                    </ToggleButton>
+                                                    <ToggleButton Name="StatusPreOrder" Grid.Row="2" Height="30" Width="140" 
+                                                                  HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,95,0,0" 
+                                                                  Content="Предзаказ" Foreground="#a69fab" FontSize="12" Style="{StaticResource CustomToggleButtonStyle}">
+                                                    </ToggleButton>
+                                                </Grid>
+                                            </Grid>
+                                            <Grid Grid.Column="0" Margin="0,330,0,0">
+                                                <TextBlock Text="Издательства" FontSize="14" Foreground="White" Margin="10,0,0,0"/>
+                                                <Grid>
+                                                    <TextBox x:Name="SearchPublisherTextBox" Style="{StaticResource TextBox}" Margin="10,30,0,0" 
+                                                             VerticalAlignment="Top" HorizontalAlignment="Left"
+                                                             Text="{Binding SearchFormPublisher, UpdateSourceTrigger=PropertyChanged}" Height="25" Width="160" Foreground="Black"/>
+                                                    <TextBlock IsHitTestVisible="False" FontSize="13" Text="Искать издательство" Margin="17,34,0,0" 
+                                                               VerticalAlignment="Top" Width="150" HorizontalAlignment="Left"
+                                                               Style="{StaticResource TextBlockStyle}">
+                                                    </TextBlock>
+                                                    <ToggleButton x:Name="PublisherOne" Grid.Row="2" Height="30" Width="140" 
+                                                                  HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,60,0,0" 
+                                                                  Content="{Binding BestPublisherOne}" Foreground="#a69fab" FontSize="12" 
+                                                                  Style="{StaticResource CustomToggleButtonStyle}">
+                                                    </ToggleButton>
+                                                    <ToggleButton Name="PublisherTwo" Grid.Row="2" Height="30" Width="140" 
+                                                                  HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,95,0,0" 
+                                                                  Content="{Binding BestPublisherTwo}" Foreground="#a69fab" FontSize="12" 
+                                                                  Style="{StaticResource CustomToggleButtonStyle}">
+                                                    </ToggleButton>
+                                                    <ToggleButton Name="PublisherThree" Grid.Row="2" Height="30" Width="140" 
+                                                                  HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,130,0,0" 
+                                                                  Content="{Binding BestPublisherThree}" Foreground="#a69fab" FontSize="12" 
+                                                                  Style="{StaticResource CustomToggleButtonStyle}">
+                                                    </ToggleButton>
+                                                    <ToggleButton Name="PublisherFour" Grid.Row="2" Height="30" Width="140" 
+                                                                  HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,165,0,0" 
+                                                                  Content="{Binding BestPublisherFour}" Foreground="#a69fab" FontSize="12" 
+                                                                  Style="{StaticResource CustomToggleButtonStyle}">
+                                                    </ToggleButton>
+                                                    <ToggleButton Name="PublisherFive" Grid.Row="2" Height="30" Width="140" 
+                                                                  HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,200,0,0" 
+                                                                  Content="{Binding BestPublisherFive}" Foreground="#a69fab" FontSize="12" 
+                                                                  Style="{StaticResource CustomToggleButtonStyle}">
+                                                    </ToggleButton>
+                                                    <ToggleButton Name="PublisherSix" Grid.Row="2" Height="30" Width="140" 
+                                                                  HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,235,0,0" 
+                                                                  Content="{Binding BestPublisherSix}" Foreground="#a69fab" FontSize="12" 
+                                                                  Style="{StaticResource CustomToggleButtonStyle}">
+                                                    </ToggleButton>
+                                                </Grid>
+                                            </Grid>
+
+                                            <Grid Grid.Column="0" Name="FilterAuthor" Margin="0,605,0,0">
+                                                <TextBlock Text="Авторы" FontSize="14" Foreground="White" Margin="10,0,0,0"/>
+                                                <Grid>
+                                                    <TextBox x:Name="SearchAuthor" Style="{StaticResource TextBox}" Margin="10,30,0,0" 
+                                                             VerticalAlignment="Top" HorizontalAlignment="Left"
+                                                             Text="{Binding SearchFormAuthor, UpdateSourceTrigger=PropertyChanged}" Height="25" Width="160" Foreground="Black"/>
+                                                    <TextBlock IsHitTestVisible="False" FontSize="13" Text="Искать автора" Margin="17,34,0,0" 
+                                                               VerticalAlignment="Top" Width="150" HorizontalAlignment="Left"
+                                                               Style="{StaticResource TextBlockStyle}">
+                                                    </TextBlock>
+                                                    <ToggleButton Name="AuthorOne" Grid.Row="2" Height="30" Width="140" 
+                                                                  HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,60,0,0" 
+                                                                  Content="{Binding BestAuthorOne}" Foreground="#a69fab" FontSize="12" 
+                                                                  Style="{StaticResource CustomToggleButtonStyle}">
+                                                    </ToggleButton>
+                                                    <ToggleButton Name="AuthorTwo" Grid.Row="2" Height="30" Width="140" 
+                                                                  HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,95,0,0" 
+                                                                  Content="{Binding BestAuthorTwo}" Foreground="#a69fab" FontSize="12" 
+                                                                  Style="{StaticResource CustomToggleButtonStyle}">
+                                                    </ToggleButton>
+                                                    <ToggleButton Name="AuthorThree" Grid.Row="2" Height="30" Width="140" 
+                                                                  HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,130,0,0" 
+                                                                  Content="{Binding BestAuthorThree}" Foreground="#a69fab" FontSize="12" 
+                                                                  Style="{StaticResource CustomToggleButtonStyle}">
+                                                    </ToggleButton>
+                                                    <ToggleButton Name="AuthorFour" Grid.Row="2" Height="30" Width="140" 
+                                                                  HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,165,0,0" 
+                                                                  Content="{Binding BestAuthorFour}" Foreground="#a69fab" FontSize="12" 
+                                                                  Style="{StaticResource CustomToggleButtonStyle}">
+                                                    </ToggleButton>
+                                                    <ToggleButton Name="AuthorFive" Grid.Row="2" Height="30" Width="140" 
+                                                                  HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,200,0,0" 
+                                                                  Content="{Binding BestAuthorFive}" Foreground="#a69fab" FontSize="12" 
+                                                                  Style="{StaticResource CustomToggleButtonStyle}">
+                                                    </ToggleButton>
+                                                    <ToggleButton Name="AuthorSix" Grid.Row="2" Height="30" Width="140" 
+                                                                  HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,235,0,0" 
+                                                                  Content="{Binding BestAuthorFive}" Foreground="#a69fab" FontSize="12" 
+                                                                  Style="{StaticResource CustomToggleButtonStyle}">
+                                                    </ToggleButton>
+                                                </Grid>
+                                            </Grid>
+
                                             <Grid Grid.Column="1">
                                                 <Grid.RowDefinitions>
-                                                    <RowDefinition Height="80"/>
+                                                    <RowDefinition Height="120"/>
                                                     <RowDefinition Height="*"/>
                                                 </Grid.RowDefinitions>
                                                 <Grid Grid.Row="0" Name="SerarchGrid">
-                                                    <TextBox x:Name="SearchForm" Style="{StaticResource TextBox}" Margin="20,20,0,0" 
-                                                             VerticalAlignment="Top" HorizontalAlignment="Center"
+                                                    <TextBox x:Name="SearchForm" Style="{StaticResource TextBox}" Margin="80,20,0,0" 
+                                                             VerticalAlignment="Top" HorizontalAlignment="Left"
                                                              Text="{Binding SearchForm, UpdateSourceTrigger=PropertyChanged}" Width="600"/>
-                                                    <TextBlock IsHitTestVisible="False" FontSize="14" Text="Поиск" Margin="40,30,0,0" 
-                                                               VerticalAlignment="Top" Width="600" HorizontalAlignment="Center">
-                                                        <TextBlock.Style>
-                                                            <Style TargetType="{x:Type TextBlock}">
-                                                                <Setter Property="Visibility" Value="Collapsed"/>
-                                                                <Style.Triggers>
-                                                                    <DataTrigger Binding="{Binding Text, ElementName=SearchForm}" Value="">
-                                                                        <Setter Property="Visibility" Value="Visible"/>
-                                                                    </DataTrigger>
-                                                                </Style.Triggers>
-                                                            </Style>
-                                                        </TextBlock.Style>
+                                                    <TextBlock IsHitTestVisible="False" FontSize="14" Text="Поиск" Margin="90,30,0,0" 
+                                                               VerticalAlignment="Top" Width="600" HorizontalAlignment="Left"
+                                                               Style="{StaticResource TextBlockStyle}">
                                                     </TextBlock>
+                                                </Grid>
+                                                <Grid Name="FilterRadioButton">
+                                                    <RadioButton Margin="80,70,0,0" Content="Название книги" Foreground="White"/>
+                                                    <RadioButton Margin="200,70,0,0" Content="Жанр" Foreground="White"/>
+                                                    <RadioButton Margin="260,70,0,0" Content="Автор" Foreground="White"/>
                                                 </Grid>
                                                 <Grid Grid.Row="1" Name="DataGrid">
                                                     <!-- Вывод информации с поиска/фильтров -->
                                                 </Grid>
                                             </Grid>
-                                        </Grid>
-                                    </Setter.Value>
-                                </Setter>
-                            </DataTrigger>
-                            <DataTrigger Binding="{Binding IsChecked, ElementName=StockButton}" Value="True">
-                                <Setter Property="Content">
-                                    <Setter.Value>
-                                        <Grid>
-                                            <!-- Grid акций -->
-                                            <TextBlock Text="ЭТО АКЦИИ" FontSize="30" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                                         </Grid>
                                     </Setter.Value>
                                 </Setter>
@@ -159,7 +255,6 @@
                     </Style>
                 </ContentControl.Style>
             </ContentControl> 
-
         </Grid>
     </Grid>
 </Window>
