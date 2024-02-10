@@ -58,42 +58,20 @@
                                                     </Grid.ColumnDefinitions>
 
                                                     <Grid Grid.Column="0">
-                                                        <TextBox x:Name="BeginRangePrice" Style="{StaticResource TextBox}" Margin="10,30,0,0" 
-                                                                 VerticalAlignment="Top" HorizontalAlignment="Left"
-                                                                 Text="{Binding BeginRangePrice, UpdateSourceTrigger=PropertyChanged}" 
-                                                                 Height="25" Width="90" Foreground="Black"/>
-                                                        <TextBlock IsHitTestVisible="False" FontSize="13" Text="От" Margin="10,34,0,0" 
-                                                                   VerticalAlignment="Top" Width="70" HorizontalAlignment="Center">
-                                                            <TextBlock.Style>
-                                                                <Style TargetType="{x:Type TextBlock}">
-                                                                    <Setter Property="Visibility" Value="Collapsed"/>
-                                                                    <Style.Triggers>
-                                                                        <DataTrigger Binding="{Binding Text, ElementName=BeginRangePrice}" Value="">
-                                                                            <Setter Property="Visibility" Value="Visible"/>
-                                                                        </DataTrigger>
-                                                                    </Style.Triggers>
-                                                                </Style>
-                                                            </TextBlock.Style>
-                                                        </TextBlock>
+                                                        <TextBox 
+                                                            Style="{StaticResource TextBox}" Margin="10,30,0,0" 
+                                                            VerticalAlignment="Top" HorizontalAlignment="Left"
+                                                            Text="{Binding BeginRangePrice, UpdateSourceTrigger=PropertyChanged}" 
+                                                            Height="25" Width="90" Foreground="Black">
+                                                        </TextBox>
                                                     </Grid>
                                                     <Grid Grid.Column="1">
-                                                        <TextBox x:Name="EndRangePrice" Style="{StaticResource TextBox}" Margin="10,30,0,0" 
-                                                                 VerticalAlignment="Top" HorizontalAlignment="Left"
-                                                                 Text="{Binding EndRangePrice, UpdateSourceTrigger=PropertyChanged}" 
-                                                                 Height="25" Width="90" Foreground="Black"/>
-                                                        <TextBlock IsHitTestVisible="False" FontSize="13" Text="До" Margin="15,34,0,0" 
-                                                                   VerticalAlignment="Top" Width="70" HorizontalAlignment="Left">
-                                                            <TextBlock.Style>
-                                                                <Style TargetType="{x:Type TextBlock}">
-                                                                    <Setter Property="Visibility" Value="Collapsed"/>
-                                                                    <Style.Triggers>
-                                                                        <DataTrigger Binding="{Binding Text, ElementName=EndRangePrice}" Value="">
-                                                                            <Setter Property="Visibility" Value="Visible"/>
-                                                                        </DataTrigger>
-                                                                    </Style.Triggers>
-                                                                </Style>
-                                                            </TextBlock.Style>
-                                                        </TextBlock>
+                                                        <TextBox 
+                                                            Style="{StaticResource TextBox}" Margin="10,30,0,0" 
+                                                            VerticalAlignment="Top" HorizontalAlignment="Left"
+                                                            Text="{Binding EndRangePrice, UpdateSourceTrigger=PropertyChanged}" 
+                                                            Height="25" Width="90" Foreground="Black">
+                                                        </TextBox>
                                                     </Grid>
                                                 </Grid>
                                             </Grid>
@@ -107,42 +85,19 @@
                                                     </Grid.ColumnDefinitions>
 
                                                     <Grid Grid.Column="0">
-                                                        <TextBox x:Name="BeginRangePublisherYear" Style="{StaticResource TextBox}" Margin="10,30,0,0" 
-                                                                 VerticalAlignment="Top" HorizontalAlignment="Left"
-                                                                 Text="{Binding SearchFormPublisherBeginYear, UpdateSourceTrigger=PropertyChanged}" 
-                                                                 Height="25" Width="90" Foreground="Black"/>
-                                                        <TextBlock IsHitTestVisible="False" FontSize="13" Text="От" Margin="10,34,0,0" 
-                                                                   VerticalAlignment="Top" Width="70" HorizontalAlignment="Center">
-                                                            <TextBlock.Style>
-                                                                <Style TargetType="{x:Type TextBlock}">
-                                                                    <Setter Property="Visibility" Value="Collapsed"/>
-                                                                    <Style.Triggers>
-                                                                        <DataTrigger Binding="{Binding Text, ElementName=BeginRangePublisherYear}" Value="">
-                                                                            <Setter Property="Visibility" Value="Visible"/>
-                                                                        </DataTrigger>
-                                                                    </Style.Triggers>
-                                                                </Style>
-                                                            </TextBlock.Style>
-                                                        </TextBlock>
+                                                        <TextBox 
+                                                            Style="{StaticResource TextBox}" Margin="10,30,0,0" 
+                                                            VerticalAlignment="Top" HorizontalAlignment="Left"
+                                                            Text="{Binding SearchFormPublisherBeginYear, UpdateSourceTrigger=PropertyChanged}" 
+                                                            Height="25" Width="90" Foreground="Black"/>
                                                     </Grid>
                                                     <Grid Grid.Column="1">
-                                                        <TextBox x:Name="EndRangePublisherYear" Style="{StaticResource TextBox}" Margin="10,30,0,0" 
-                                                                 VerticalAlignment="Top" HorizontalAlignment="Left"
-                                                                 Text="{Binding SearchFormPublisheEndYear, UpdateSourceTrigger=PropertyChanged}" 
-                                                                 Height="25" Width="90" Foreground="Black"/>
-                                                        <TextBlock IsHitTestVisible="False" FontSize="13" Text="До" Margin="15,34,0,0" 
-                                                                   VerticalAlignment="Top" Width="70" HorizontalAlignment="Left">
-                                                            <TextBlock.Style>
-                                                                <Style TargetType="{x:Type TextBlock}">
-                                                                    <Setter Property="Visibility" Value="Collapsed"/>
-                                                                    <Style.Triggers>
-                                                                        <DataTrigger Binding="{Binding Text, ElementName=BeginRangePublisherYear}" Value="">
-                                                                            <Setter Property="Visibility" Value="Visible"/>
-                                                                        </DataTrigger>
-                                                                    </Style.Triggers>
-                                                                </Style>
-                                                            </TextBlock.Style>
-                                                        </TextBlock>
+                                                        <TextBox 
+                                                            Style="{StaticResource TextBox}" Margin="10,30,0,0" 
+                                                            VerticalAlignment="Top" HorizontalAlignment="Left"
+                                                            Text="{Binding SearchFormPublisheEndYear, UpdateSourceTrigger=PropertyChanged}" 
+                                                            Height="25" Width="90" Foreground="Black">
+                                                        </TextBox>
                                                     </Grid>
                                                 </Grid>
                                             </Grid>
@@ -166,22 +121,12 @@
                                             <Grid Grid.Column="0" Margin="0,330,0,0">
                                                 <TextBlock Text="Издательства" FontSize="14" Foreground="White" Margin="10,0,0,0"/>
                                                 <Grid>
-                                                    <TextBox x:Name="SearchPublisherTextBox" Style="{StaticResource TextBox}" Margin="10,30,0,0" 
-                                                             VerticalAlignment="Top" HorizontalAlignment="Left"
-                                                             Text="{Binding SearchFormPublisher, UpdateSourceTrigger=PropertyChanged}" Height="25" Width="160" Foreground="Black"/>
-                                                    <TextBlock IsHitTestVisible="False" FontSize="13" Text="Искать издательство" Margin="17,34,0,0" 
-                                                               VerticalAlignment="Top" Width="150" HorizontalAlignment="Left">
-                                                        <TextBlock.Style>
-                                                            <Style TargetType="{x:Type TextBlock}">
-                                                                <Setter Property="Visibility" Value="Collapsed"/>
-                                                                <Style.Triggers>
-                                                                    <DataTrigger Binding="{Binding Text, ElementName=SearchPublisherTextBox}" Value="">
-                                                                        <Setter Property="Visibility" Value="Visible"/>
-                                                                    </DataTrigger>
-                                                                </Style.Triggers>
-                                                            </Style>
-                                                        </TextBlock.Style>
-                                                    </TextBlock>
+                                                    <TextBox 
+                                                        Style="{StaticResource TextBox}" Margin="10,30,0,0" 
+                                                        VerticalAlignment="Top" HorizontalAlignment="Left"
+                                                        Text="{Binding SearchFormPublisher, UpdateSourceTrigger=PropertyChanged}" 
+                                                        Height="25" Width="160" Foreground="Black">
+                                                    </TextBox>
                                                     <ToggleButton x:Name="PublisherOne" Grid.Row="2" Height="30" Width="140" 
                                                                   HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,60,0,0" 
                                                                   Content="{Binding BestPublisherOne}" Foreground="#a69fab" FontSize="12" 
@@ -218,23 +163,12 @@
                                             <Grid Grid.Column="0" Name="FilterAuthor" Margin="0,605,0,0">
                                                 <TextBlock Text="Авторы" FontSize="14" Foreground="White" Margin="10,0,0,0"/>
                                                 <Grid>
-                                                    <TextBox x:Name="SearchAuthor" Style="{StaticResource TextBox}" Margin="10,30,0,0" 
-                                                             VerticalAlignment="Top" HorizontalAlignment="Left"
-                                                             Text="{Binding SearchFormAuthor, UpdateSourceTrigger=PropertyChanged}" Height="25" Width="160" Foreground="Black"/>
-                                                    <TextBlock IsHitTestVisible="False" FontSize="13" Text="Искать автора" Margin="17,34,0,0" 
-                                                               VerticalAlignment="Top" Width="150" HorizontalAlignment="Left">
-                                                        <TextBlock.Style>
-                                                            <Style TargetType="{x:Type TextBlock}">
-                                                                <Setter Property="Visibility" Value="Collapsed"/>
-                                                                <Style.Triggers>
-                                                                    <DataTrigger Binding="{Binding Text, ElementName=SearchAuthor}" Value="">
-                                                                        <Setter Property="Visibility" Value="Visible"/>
-                                                                    </DataTrigger>
-                                                                </Style.Triggers>
-                                                            </Style>
-                                                        </TextBlock.Style>
-
-                                                    </TextBlock>
+                                                    <TextBox
+                                                        Style="{StaticResource TextBox}" Margin="10,30,0,0"
+                                                        Text="{Binding SearchFormAuthor, UpdateSourceTrigger=PropertyChanged}"
+                                                        VerticalAlignment="Top" HorizontalAlignment="Left" 
+                                                        Width="160" Height="25" Foreground="Black">
+                                                    </TextBox>
                                                     <ToggleButton Name="AuthorOne" Grid.Row="2" Height="30" Width="140" 
                                                                   HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,60,0,0" 
                                                                   Content="{Binding BestAuthorOne}" Foreground="#a69fab" FontSize="12" 
@@ -273,24 +207,16 @@
                                                     <RowDefinition Height="120"/>
                                                     <RowDefinition Height="*"/>
                                                 </Grid.RowDefinitions>
-                                                <Grid Grid.Row="0" Name="SerarchGrid">
-                                                    <TextBox x:Name="SearchForm" Style="{StaticResource TextBox}" Margin="80,20,0,0" 
-                                                             VerticalAlignment="Top" HorizontalAlignment="Left"
-                                                             Text="{Binding SearchForm, UpdateSourceTrigger=PropertyChanged}" Width="600"/>
-                                                    <TextBlock IsHitTestVisible="False" FontSize="14" Text="Поиск" Margin="90,30,0,0" 
-                                                               VerticalAlignment="Top" Width="600" HorizontalAlignment="Left">
-                                                        <TextBlock.Style>
-                                                            <Style TargetType="{x:Type TextBlock}">
-                                                                <Setter Property="Visibility" Value="Collapsed"/>
-                                                                <Style.Triggers>
-                                                                    <DataTrigger Binding="{Binding Text, ElementName=SearchForm}" Value="">
-                                                                        <Setter Property="Visibility" Value="Visible"/>
-                                                                    </DataTrigger>
-                                                                </Style.Triggers>
-                                                            </Style>
-                                                        </TextBlock.Style>
-                                                    </TextBlock>
+
+                                                <Grid Grid.Row="0" Name="SearchGrid">
+                                                    <TextBox 
+                                                        Style="{StaticResource TextBox}" Margin="80,20,0,0" 
+                                                        Text="{Binding SearchForm, UpdateSourceTrigger=PropertyChanged}"
+                                                        VerticalAlignment="Top" HorizontalAlignment="Left" 
+                                                        Width="600" Height="35" Foreground="Black">
+                                                    </TextBox>
                                                 </Grid>
+
                                                 <Grid Name="FilterRadioButton">
                                                     <RadioButton Margin="80,70,0,0" Content="Название книги" Foreground="White"/>
                                                     <RadioButton Margin="200,70,0,0" Content="Жанр" Foreground="White"/>
@@ -317,7 +243,7 @@
                         </Style.Triggers>
                     </Style>
                 </ContentControl.Style>
-            </ContentControl> 
+            </ContentControl>
         </Grid>
     </Grid>
 </Window>
