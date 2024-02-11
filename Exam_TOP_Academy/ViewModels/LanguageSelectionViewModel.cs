@@ -5,12 +5,11 @@ using System.Windows.Input;
 using System.IO;
 using Newtonsoft.Json;
 using Exam_TOP_Academy.Settings;
-using Exam_TOP_Academy.View;
 
 namespace Exam_TOP_Academy.ViewModels;
 public class LanguageSelectionViewModel : INotifyPropertyChanged
 {
-    private string filePath = @"appsettings.json";
+    private string filePath = @"appsettingslang.json";
 
     public ICommand CloseFormCommand { get; }
     public ICommand DoneChangeLanguageCommand { get; }

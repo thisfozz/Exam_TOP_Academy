@@ -3,6 +3,7 @@ using Command_;
 using Exam_TOP_Academy.DataAccess.Contexts;
 using Exam_TOP_Academy.DataAccess.Entities;
 using Exam_TOP_Academy.View;
+using Microsoft.Extensions.Configuration;
 using System.ComponentModel;
 using System.Windows;
 using System.Windows.Input;
@@ -61,13 +62,24 @@ public class RegistrationViewModel : INotifyPropertyChanged
         }
     }
 
+    private readonly IConfiguration configuration;
     public RegistrationViewModel()
     {
+        configuration = BuildConfiguration();
+
         OpenAuthorizationCommand = new DelegateCommand(OpenAuthorization, _ => true);
         RollUpFormCommand = new DelegateCommand(RollUpForm, _ => true);
         MovingFormCommand = new DelegateCommand(MovingForm, _ => true);
         CloseFormCommand = new DelegateCommand(CloseForm, _ => true);
         RegistrationUserCommand = new DelegateCommand(RegistrationUser, _ => true);
+    }
+
+    private IConfiguration BuildConfiguration()
+    {
+        return new ConfigurationBuilder()
+            .SetBasePath(AppDomain.CurrentDomain.BaseDirectory)
+            .AddJsonFile("appsettings.json")
+            .Build();
     }
 
     private void OpenAuthorization(object obj)
@@ -107,7 +119,7 @@ public class RegistrationViewModel : INotifyPropertyChanged
             Password = encryptedPassword
         };
 
-        using var context = new BookStoreContext();
+        using var context = new BookStoreContext(configuration);
         context.AddUser(newUser);
 
         var mainWindow = new MainWindow();
