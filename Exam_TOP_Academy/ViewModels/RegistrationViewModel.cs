@@ -48,7 +48,6 @@ public class RegistrationViewModel : INotifyPropertyChanged
     }
 
     private string _password;
-
     public string Password
     {
         get { return _password; }
@@ -76,10 +75,7 @@ public class RegistrationViewModel : INotifyPropertyChanged
 
     private IConfiguration BuildConfiguration()
     {
-        return new ConfigurationBuilder()
-            .SetBasePath(AppDomain.CurrentDomain.BaseDirectory)
-            .AddJsonFile("appsettings.json")
-            .Build();
+        return new ConfigurationBuilder().SetBasePath(AppDomain.CurrentDomain.BaseDirectory).AddJsonFile("appsettings.json").Build();
     }
 
     private void OpenAuthorization(object obj)

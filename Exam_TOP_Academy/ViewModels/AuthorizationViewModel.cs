@@ -2,13 +2,10 @@
 using Command_;
 using Exam_TOP_Academy.DataAccess.Contexts;
 using Exam_TOP_Academy.View;
-using Microsoft.Extensions.Configuration.Json;
 using Microsoft.Extensions.Configuration;
 using System.ComponentModel;
 using System.Windows;
 using System.Windows.Input;
-using System.Reflection;
-using System.IO;
 
 namespace Exam_TOP_Academy.ViewModels;
 public class AuthorizationViewModel : INotifyPropertyChanged
@@ -83,10 +80,7 @@ public class AuthorizationViewModel : INotifyPropertyChanged
 
     private IConfiguration BuildConfiguration()
     {
-        return new ConfigurationBuilder()
-            .SetBasePath(AppDomain.CurrentDomain.BaseDirectory)
-            .AddJsonFile("appsettings.json")
-            .Build();
+        return new ConfigurationBuilder().SetBasePath(AppDomain.CurrentDomain.BaseDirectory).AddJsonFile("appsettings.json").Build();
     }
 
     private void OpenSettingsGrid(object obj)

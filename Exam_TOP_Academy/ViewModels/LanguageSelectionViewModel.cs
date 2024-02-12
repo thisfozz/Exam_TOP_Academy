@@ -75,6 +75,8 @@ public class LanguageSelectionViewModel : INotifyPropertyChanged
 
                 string jsonData = JsonConvert.SerializeObject(mainSettings, Formatting.Indented);
                 File.WriteAllText(filePath, jsonData);
+
+                Application.Current.Shutdown();
             }
         }
         catch (Exception ex)

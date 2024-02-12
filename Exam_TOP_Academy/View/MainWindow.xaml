@@ -31,7 +31,6 @@
                 <RowDefinition Height="100"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-
             <StackPanel Grid.Row="0" Orientation="Horizontal" VerticalAlignment="Center">
                 <RadioButton x:Name="MainButton" Style="{StaticResource MainWindowButtonStyle}" 
                              Content="{x:Static resource:Resources.MainRecources}" Width="250" FontWeight="DemiBold"/>
@@ -39,468 +38,515 @@
                              Content="{x:Static resource:Resources.BookkeepingRecources}" Width="350" FontWeight="DemiBold"/>
             </StackPanel>
 
-            <ContentPresenter Grid.Row="1" Content="{Binding}">
-                <ContentPresenter.ContentTemplate>
-                    <DataTemplate>
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1200"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="220"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid Grid.Column="0" Name="FilterGridPrice">
+                        <TextBlock 
+                            Text="{x:Static resource:Resources.PriceRecources}" 
+                            FontSize="14" Foreground="White" Margin="10,0,0,0">
+                        </TextBlock>
                         <Grid>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="1200"/>
-                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="100"/>
+                                <ColumnDefinition Width="100"/>
                             </Grid.ColumnDefinitions>
-                            <Grid Grid.Row="1">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="220"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
 
-                                <Grid Grid.Column="0" Name="FilterGridPrice">
-                                    <TextBlock 
-                                        Text="{x:Static resource:Resources.PriceRecources}" 
-                                        FontSize="14" Foreground="White" Margin="10,0,0,0">
-                                    </TextBlock>
-                                    <Grid>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="100"/>
-                                            <ColumnDefinition Width="100"/>
-                                        </Grid.ColumnDefinitions>
-
-                                        <Grid Grid.Column="0">
-                                            <TextBox 
-                                                x:Name="BeginRangePrice" Style="{StaticResource TextBox}" Margin="10,30,0,0" 
-                                                VerticalAlignment="Top" HorizontalAlignment="Left"
-                                                Text="{Binding BeginRangePrice, UpdateSourceTrigger=PropertyChanged}" 
-                                                Height="25" Width="90" Foreground="Black">
-                                            </TextBox>
-                                            <TextBlock 
-                                                IsHitTestVisible="False" FontSize="13" 
-                                                Text="{x:Static resource:Resources.FromRecources}" Margin="10,34,0,0" 
-                                                VerticalAlignment="Top" Width="70" HorizontalAlignment="Center">
-                                                <TextBlock.Style>
-                                                    <Style TargetType="{x:Type TextBlock}">
-                                                        <Setter Property="Visibility" Value="Collapsed"/>
-                                                        <Style.Triggers>
-                                                            <DataTrigger Binding="{Binding Text, ElementName=BeginRangePrice}" Value="">
-                                                                <Setter Property="Visibility" Value="Visible"/>
-                                                            </DataTrigger>
-                                                        </Style.Triggers>
-                                                    </Style>
-                                                </TextBlock.Style>
-                                            </TextBlock>
-                                        </Grid>
-                                        <Grid Grid.Column="1">
-                                            <TextBox 
-                                                x:Name="EndRangePrice" Style="{StaticResource TextBox}" Margin="10,30,0,0" 
-                                                VerticalAlignment="Top" HorizontalAlignment="Left"
-                                                Text="{Binding EndRangePrice, UpdateSourceTrigger=PropertyChanged}" 
-                                                Height="25" Width="90" Foreground="Black">
-                                            </TextBox>
-                                            <TextBlock 
-                                                IsHitTestVisible="False" FontSize="13" 
-                                                Text="{x:Static resource:Resources.BeforeRecources}" Margin="15,34,0,0" 
-                                                VerticalAlignment="Top" Width="70" HorizontalAlignment="Left">
-                                                <TextBlock.Style>
-                                                    <Style TargetType="{x:Type TextBlock}">
-                                                        <Setter Property="Visibility" Value="Collapsed"/>
-                                                        <Style.Triggers>
-                                                            <DataTrigger Binding="{Binding Text, ElementName=EndRangePrice}" Value="">
-                                                                <Setter Property="Visibility" Value="Visible"/>
-                                                            </DataTrigger>
-                                                        </Style.Triggers>
-                                                    </Style>
-                                                </TextBlock.Style>
-                                            </TextBlock>
-                                        </Grid>
-                                    </Grid>
-                                </Grid>
-
-                                <Grid Grid.Column="0" Name="FilterGridPublisherYear" Margin="0,90,0,0">
-                                    <TextBlock Text="{x:Static resource:Resources.YearPublicationRecources}" FontSize="14" Foreground="White" Margin="10,0,0,0"/>
-                                    <Grid>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="100"/>
-                                            <ColumnDefinition Width="100"/>
-                                        </Grid.ColumnDefinitions>
-
-                                        <Grid Grid.Column="0">
-                                            <TextBox 
-                                                x:Name="BeginRangePublisherYear" Style="{StaticResource TextBox}" Margin="10,30,0,0" 
-                                                VerticalAlignment="Top" HorizontalAlignment="Left"
-                                                Text="{Binding SearchFormPublisherBeginYear, UpdateSourceTrigger=PropertyChanged}" 
-                                                Height="25" Width="90" Foreground="Black">
-                                            </TextBox>
-                                            <TextBlock 
-                                                IsHitTestVisible="False" FontSize="13" 
-                                                Text="{x:Static resource:Resources.FromRecources}" Margin="10,34,0,0" 
-                                                VerticalAlignment="Top" Width="70" HorizontalAlignment="Center">
-                                                <TextBlock.Style>
-                                                    <Style TargetType="{x:Type TextBlock}">
-                                                        <Setter Property="Visibility" Value="Collapsed"/>
-                                                        <Style.Triggers>
-                                                            <DataTrigger Binding="{Binding Text, ElementName=BeginRangePublisherYear}" Value="">
-                                                                <Setter Property="Visibility" Value="Visible"/>
-                                                            </DataTrigger>
-                                                        </Style.Triggers>
-                                                    </Style>
-                                                </TextBlock.Style>
-                                            </TextBlock>
-                                        </Grid>
-                                        <Grid Grid.Column="1">
-                                            <TextBox 
-                                                x:Name="EndRangePublisherYear" Style="{StaticResource TextBox}" Margin="10,30,0,0" 
-                                                VerticalAlignment="Top" HorizontalAlignment="Left"
-                                                Text="{Binding SearchFormPublisheEndYear, UpdateSourceTrigger=PropertyChanged}" 
-                                                Height="25" Width="90" Foreground="Black">
-                                            </TextBox>
-                                            <TextBlock 
-                                                IsHitTestVisible="False" FontSize="13" 
-                                                Text="{x:Static resource:Resources.BeforeRecources}" Margin="15,34,0,0" 
-                                                VerticalAlignment="Top" Width="70" HorizontalAlignment="Left">
-                                                <TextBlock.Style>
-                                                    <Style TargetType="{x:Type TextBlock}">
-                                                        <Setter Property="Visibility" Value="Collapsed"/>
-                                                        <Style.Triggers>
-                                                            <DataTrigger Binding="{Binding Text, ElementName=EndRangePublisherYear}" Value="">
-                                                                <Setter Property="Visibility" Value="Visible"/>
-                                                            </DataTrigger>
-                                                        </Style.Triggers>
-                                                    </Style>
-                                                </TextBlock.Style>
-                                            </TextBlock>
-                                        </Grid>
-                                    </Grid>
-                                </Grid>
-                                <Grid Grid.Column="0" Name="FilterGridStatus" Margin="0,180,0,0">
-                                    <TextBlock 
-                                        Text="{x:Static resource:Resources.StatusRecources}" FontSize="14" 
-                                        Foreground="White" Margin="10,0,0,0">
-                                    </TextBlock>
-                                    <Grid>
-                                        <ToggleButton 
-                                            Name="StatusNewBook" Grid.Row="2" Height="30" Width="140" 
-                                            HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,25,0,0" 
-                                            Content="{x:Static resource:Resources.NewProductsRecources}" 
-                                            Foreground="#a69fab" FontSize="12" 
-                                            Style="{StaticResource CustomToggleButtonStyle}"
-                                            IsChecked="{Binding IsStatusNewBookChecked, Mode=TwoWay}">
-                                        </ToggleButton>
-                                        <ToggleButton 
-                                            Name="StatusBestsellers" Grid.Row="2" Height="30" Width="140" 
-                                            HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,60,0,0" 
-                                            Content="{x:Static resource:Resources.BestsellersRecources}" 
-                                            Foreground="#a69fab" FontSize="12" 
-                                            Style="{StaticResource CustomToggleButtonStyle}"
-                                            IsChecked="{Binding IsStatusBestsellersChecked, Mode=TwoWay}">
-                                        </ToggleButton>
-                                        <ToggleButton 
-                                            Name="StatusPreOrder" Grid.Row="2" Height="30" Width="140" 
-                                            HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,95,0,0" 
-                                            Content="{x:Static resource:Resources.Pre_orderRecources}" 
-                                            Foreground="#a69fab" FontSize="12" 
-                                            Style="{StaticResource CustomToggleButtonStyle}"
-                                            IsChecked="{Binding IsStatusPreOrderChecked, Mode=TwoWay}">
-                                        </ToggleButton>
-                                    </Grid>
-                                </Grid>
-                                <Grid Grid.Column="0" Margin="0,330,0,0">
-                                    <TextBlock 
-                                        Text="{x:Static resource:Resources.PublishingHousesRecources}" 
-                                        FontSize="14" Foreground="White" Margin="10,0,0,0">
-                                    </TextBlock>
-                                    <Grid>
-                                        <ToggleButton 
-                                            x:Name="PublisherOne" Grid.Row="2" Height="30" Width="140" 
-                                            HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,30,0,0" 
-                                            Content="{Binding BestPublisherOne}" Foreground="#a69fab" FontSize="12" 
-                                            Style="{StaticResource CustomToggleButtonStyle}"
-                                            IsChecked="{Binding IsPublisherOneChecked, Mode=TwoWay}">
-                                        </ToggleButton>
-                                        <TextBlock 
-                                            Grid.Row="2" Text="{Binding BestPublisherOneText}" Height="20" Width="140" 
-                                            HorizontalAlignment="Left" VerticalAlignment="Top" Margin="40,35,0,0" FontSize="15"
-                                            Foreground="#a69fab">
-                                        </TextBlock>
-                                        <ToggleButton 
-                                            Name="PublisherTwo" Grid.Row="2" Height="30" Width="140" 
-                                            HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,60,0,0" 
-                                            Content="{Binding BestPublisherTwo}" Foreground="#a69fab" FontSize="12" 
-                                            Style="{StaticResource CustomToggleButtonStyle}"
-                                            IsChecked="{Binding IsPublisherTwoChecked, Mode=TwoWay}">
-                                        </ToggleButton>
-                                        <TextBlock 
-                                            Grid.Row="2" Text="{Binding BestPublisherTwoText}" Height="20" Width="140" 
-                                            HorizontalAlignment="Left" VerticalAlignment="Top" Margin="40,65,0,0" FontSize="15"
-                                            Foreground="#a69fab">
-                                        </TextBlock>
-                                        <ToggleButton 
-                                            Name="PublisherThree" Grid.Row="2" Height="30" Width="140" 
-                                            HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,90,0,0" 
-                                            Content="{Binding BestPublisherThree}" Foreground="#a69fab" FontSize="12" 
-                                            Style="{StaticResource CustomToggleButtonStyle}"
-                                            IsChecked="{Binding IsPublisherThreeChecked, Mode=TwoWay}">
-                                        </ToggleButton>
-                                        <TextBlock 
-                                            Grid.Row="2" Text="{Binding BestPublisherThreeText}" Height="20" Width="140" 
-                                            HorizontalAlignment="Left" VerticalAlignment="Top" Margin="40,95,0,0" FontSize="15"
-                                            Foreground="#a69fab">
-                                        </TextBlock>
-                                        <ToggleButton 
-                                            Name="PublisherFour" Grid.Row="2" Height="30" Width="140" 
-                                            HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,120,0,0" 
-                                            Content="{Binding BestPublisherFour}" Foreground="#a69fab" FontSize="12" 
-                                            Style="{StaticResource CustomToggleButtonStyle}"
-                                            IsChecked="{Binding IsPublisherFourChecked, Mode=TwoWay}">
-                                        </ToggleButton>
-                                        <TextBlock 
-                                            Grid.Row="2" Text="{Binding BestPublisherFourText}" Height="20" Width="140" 
-                                            HorizontalAlignment="Left" VerticalAlignment="Top" Margin="40,125,0,0" FontSize="15"
-                                            Foreground="#a69fab">
-                                        </TextBlock>
-                                        <ToggleButton 
-                                            Name="PublisherFive" Grid.Row="2" Height="30" Width="140" 
-                                            HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,150,0,0" 
-                                            Content="{Binding BestPublisherFive}" Foreground="#a69fab" FontSize="12" 
-                                            Style="{StaticResource CustomToggleButtonStyle}"
-                                            IsChecked="{Binding IsPublisherFiveChecked, Mode=TwoWay}">
-                                        </ToggleButton>
-                                        <TextBlock 
-                                            Grid.Row="2" Text="{Binding BestPublisherFiveText}" Height="20" Width="140" 
-                                            HorizontalAlignment="Left" VerticalAlignment="Top" Margin="40,155,0,0" FontSize="15"
-                                            Foreground="#a69fab">
-                                        </TextBlock>
-                                    </Grid>
-                                </Grid>
-
-                                <Grid Grid.Column="0" Name="FilterAuthor" Margin="0,580,0,0">
-                                    <TextBlock 
-                                        Text="{x:Static resource:Resources.AuthorsRecources}" 
-                                        FontSize="14" Foreground="White" Margin="10,0,0,0">
-                                    </TextBlock>
-                                    <Grid>
-                                        <ToggleButton 
-                                            Name="AuthorOne" Grid.Row="2" Height="30" Width="140" 
-                                            HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,60,0,0" 
-                                            Content="{Binding BestAuthorOne}" Foreground="#a69fab" FontSize="12" 
-                                            Style="{StaticResource CustomToggleButtonStyle}"
-                                            IsChecked="{Binding IsAuthorOneChecked, Mode=TwoWay}">
-                                        </ToggleButton>
-                                        <ToggleButton 
-                                            Name="AuthorTwo" Grid.Row="2" Height="30" Width="140" 
-                                            HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,95,0,0" 
-                                            Content="{Binding BestAuthorTwo}" Foreground="#a69fab" FontSize="12" 
-                                            Style="{StaticResource CustomToggleButtonStyle}"
-                                            IsChecked="{Binding IsAuthorTwoChecked, Mode=TwoWay}">
-                                        </ToggleButton>
-                                        <ToggleButton 
-                                            Name="AuthorThree" Grid.Row="2" Height="30" Width="140" 
-                                            HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,130,0,0" 
-                                            Content="{Binding BestAuthorThree}" Foreground="#a69fab" FontSize="12" 
-                                            Style="{StaticResource CustomToggleButtonStyle}"
-                                            IsChecked="{Binding IsAuthorThreeChecked, Mode=TwoWay}">
-                                        </ToggleButton>
-                                        <ToggleButton 
-                                            Name="AuthorFour" Grid.Row="2" Height="30" Width="140" 
-                                            HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,165,0,0" 
-                                            Content="{Binding BestAuthorFour}" Foreground="#a69fab" FontSize="12" 
-                                            Style="{StaticResource CustomToggleButtonStyle}"
-                                            IsChecked="{Binding IsAuthorFourChecked, Mode=TwoWay}">
-                                        </ToggleButton>
-                                        <ToggleButton 
-                                            Name="AuthorFive" Grid.Row="2" Height="30" Width="140" 
-                                            HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,200,0,0" 
-                                            Content="{Binding BestAuthorFive}" Foreground="#a69fab" FontSize="12" 
-                                            Style="{StaticResource CustomToggleButtonStyle}"
-                                            IsChecked="{Binding IsAuthorFiveChecked, Mode=TwoWay}">
-                                        </ToggleButton>
-                                    </Grid>
-                                </Grid>
-                                <Border 
-                                    x:Name="ApplyFilterButton" Grid.Column="0" Height="30"
-                                    Margin="25,800,25,0" Background="Black">
-                                    <Border.Style>
-                                        <Style TargetType="{x:Type Border}">
-                                            <Setter Property="BorderBrush" Value="#FF333842"/>
+                            <Grid Grid.Column="0">
+                                <TextBox 
+                                    x:Name="BeginRangePrice" Style="{StaticResource TextBox}" Margin="10,30,0,0" 
+                                    VerticalAlignment="Top" HorizontalAlignment="Left"
+                                    Text="{Binding BeginRangePrice, UpdateSourceTrigger=PropertyChanged}" 
+                                    Height="25" Width="90" Foreground="Black">
+                                </TextBox>
+                                <TextBlock 
+                                    IsHitTestVisible="False" FontSize="13" 
+                                    Text="{x:Static resource:Resources.FromRecources}" Margin="10,34,0,0" 
+                                    VerticalAlignment="Top" Width="70" HorizontalAlignment="Center">
+                                    <TextBlock.Style>
+                                        <Style TargetType="{x:Type TextBlock}">
+                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding Text, ElementName=BeginRangePrice}" Value="">
+                                                    <Setter Property="Visibility" Value="Visible"/>
+                                                </DataTrigger>
+                                            </Style.Triggers>
                                         </Style>
-                                    </Border.Style>
-                                    <Button 
-                                        Content="{x:Static resource:Resources.ApplyRecources}" 
-                                        FontSize="16" Foreground="White" Style="{StaticResource ApplyFilterButton}"
-                                        Command="{Binding ApplyFilterCommand}"/>
-                                </Border>
-
-                                <Grid Grid.Column="1">
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="120"/>
-                                        <RowDefinition Height="*"/>
-                                    </Grid.RowDefinitions>
-                                    <Grid Grid.Row="0" Name="SerarchGrid">
-                                        <TextBox 
-                                            x:Name="SearchAllTextBox" 
-                                            Style="{StaticResource TextBox}" Margin="0,30,0,0" 
-                                            VerticalAlignment="Top" HorizontalAlignment="Center"
-                                            Text="{Binding SearchFormPublisher, UpdateSourceTrigger=PropertyChanged}" 
-                                            Height="35" Width="600" Foreground="Black">
-                                        </TextBox>
-                                        <TextBlock 
-                                            IsHitTestVisible="False" FontSize="13" 
-                                            Text="{x:Static resource:Resources.SearchRecources}" Margin="30,39,0,0" 
-                                            VerticalAlignment="Top" Width="600" HorizontalAlignment="Center">
-                                            <TextBlock.Style>
-                                                <Style TargetType="{x:Type TextBlock}">
-                                                    <Setter Property="Visibility" Value="Collapsed"/>
-                                                    <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Text, ElementName=SearchAllTextBox}" Value="">
-                                                            <Setter Property="Visibility" Value="Visible"/>
-                                                        </DataTrigger>
-                                                    </Style.Triggers>
-                                                </Style>
-                                            </TextBlock.Style>
-                                        </TextBlock>
-                                    </Grid>
-                                    <Grid Name="FilterRadioButton" Margin="200,70,0,0">
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="Auto"/>
-                                            <ColumnDefinition Width="20"/>
-                                            <ColumnDefinition Width="Auto"/>
-                                            <ColumnDefinition Width="20"/>
-                                            <ColumnDefinition Width="Auto"/>
-                                        </Grid.ColumnDefinitions>
-
-                                        <RadioButton Grid.Column="0" 
-                                                     Content="{x:Static resource:Resources.TitleBookRecources}" Foreground="White"/>
-                                        <RadioButton Grid.Column="2" 
-                                                     Content="{x:Static resource:Resources.GenreRecources}" Foreground="White"/>
-                                        <RadioButton Grid.Column="4" 
-                                                     Content="{x:Static resource:Resources.AuthorsRecources}" Foreground="White"/>
-                                    </Grid>
-                                    <Grid Grid.Row="1" Name="DataGrid">
-                                        <materialDesign:Card Padding="0" Margin="8" HorizontalAlignment="Stretch" 
-                                                             VerticalAlignment="Stretch" Background="#2f285c">
-                                            <DataGrid x:Name="Books" AutoGenerateColumns="False" 
-                                                      IsReadOnly="True" CanUserAddRows="False" HorizontalAlignment="Stretch" 
-                                                      VerticalAlignment="Stretch" Background="#2f285c" Foreground="#9faad5"
-                                                      ItemsSource="{Binding Books}">
-                                                <DataGrid.Columns>
-                                                    <DataGridTextColumn Header="{x:Static resource:Resources.BookIDRecources}" 
-                                                                        Binding="{Binding BookIdData}" Width="80">
-                                                        <DataGridTextColumn.HeaderStyle>
-                                                            <Style TargetType="DataGridColumnHeader">
-                                                                <Setter Property="Foreground" Value="Black"/>
-                                                                <Setter Property="Background" Value="#9faad5"/>
-                                                                <Setter Property="HorizontalContentAlignment" Value="Center"/>
-                                                                <Setter Property="BorderBrush" Value="Black"/>
-                                                                <Setter Property="BorderThickness" Value="1"/>
-                                                                <Setter Property="FontSize" Value="15"/>
-                                                                <Setter Property="Height" Value="30"/>
-                                                            </Style>
-                                                        </DataGridTextColumn.HeaderStyle>
-                                                        <DataGridTextColumn.ElementStyle>
-                                                            <Style TargetType="TextBlock">
-                                                                <Setter Property="Foreground" Value="Black"/>
-                                                                <Setter Property="Background" Value="#9faad5"/>
-                                                                <Setter Property="Padding" Value="30,0,0,0"/>
-                                                            </Style>
-                                                        </DataGridTextColumn.ElementStyle>
-                                                    </DataGridTextColumn>
-                                                    <DataGridTextColumn Header="{x:Static resource:Resources.BookTitleResources}" 
-                                                                        Binding="{Binding TitleData}" Width="220">
-                                                        <DataGridTextColumn.HeaderStyle>
-                                                            <Style TargetType="DataGridColumnHeader">
-                                                                <Setter Property="Foreground" Value="Black"/>
-                                                                <Setter Property="Background" Value="#9faad5"/>
-                                                                <Setter Property="HorizontalContentAlignment" Value="Center"/>
-                                                                <Setter Property="BorderBrush" Value="Black"/>
-                                                                <Setter Property="BorderThickness" Value="1"/>
-                                                                <Setter Property="FontSize" Value="15"/>
-                                                            </Style>
-                                                        </DataGridTextColumn.HeaderStyle>
-                                                        <DataGridTextColumn.ElementStyle>
-                                                            <Style TargetType="TextBlock">
-                                                                <Setter Property="Foreground" Value="Black"/>
-                                                            </Style>
-                                                        </DataGridTextColumn.ElementStyle>
-                                                    </DataGridTextColumn>
-                                                    <DataGridTextColumn Header="{x:Static resource:Resources.PublisherResources}" 
-                                                                        Binding="{Binding PublisherData}" Width="150">
-                                                        <DataGridTextColumn.HeaderStyle>
-                                                            <Style TargetType="DataGridColumnHeader">
-                                                                <Setter Property="Foreground" Value="Black"/>
-                                                                <Setter Property="Background" Value="#9faad5"/>
-                                                                <Setter Property="HorizontalContentAlignment" Value="Center"/>
-                                                                <Setter Property="BorderBrush" Value="Black"/>
-                                                                <Setter Property="BorderThickness" Value="1"/>
-                                                                <Setter Property="FontSize" Value="15"/>
-                                                            </Style>
-                                                        </DataGridTextColumn.HeaderStyle>
-                                                        <DataGridTextColumn.ElementStyle>
-                                                            <Style TargetType="TextBlock">
-                                                                <Setter Property="Foreground" Value="Black"/>
-                                                            </Style>
-                                                        </DataGridTextColumn.ElementStyle>
-                                                    </DataGridTextColumn>
-                                                    <DataGridTextColumn Header="{x:Static resource:Resources.PublicationDateResources}" 
-                                                                        Binding="{Binding PublicationDateData}" Width="150">
-                                                        <DataGridTextColumn.HeaderStyle>
-                                                            <Style TargetType="DataGridColumnHeader">
-                                                                <Setter Property="Foreground" Value="Black"/>
-                                                                <Setter Property="Background" Value="#9faad5"/>
-                                                                <Setter Property="HorizontalContentAlignment" Value="Center"/>
-                                                                <Setter Property="BorderBrush" Value="Black"/>
-                                                                <Setter Property="BorderThickness" Value="1"/>
-                                                                <Setter Property="FontSize" Value="15"/>
-                                                            </Style>
-                                                        </DataGridTextColumn.HeaderStyle>
-                                                        <DataGridTextColumn.ElementStyle>
-                                                            <Style TargetType="TextBlock">
-                                                                <Setter Property="Foreground" Value="Black"/>
-                                                            </Style>
-                                                        </DataGridTextColumn.ElementStyle>
-                                                    </DataGridTextColumn>
-                                                    <DataGridTextColumn Header="{x:Static resource:Resources.DescriptionResources}" 
-                                                                        Binding="{Binding DescriptionData}" Width="245">
-                                                        <DataGridTextColumn.HeaderStyle>
-                                                            <Style TargetType="DataGridColumnHeader">
-                                                                <Setter Property="Foreground" Value="Black"/>
-                                                                <Setter Property="Background" Value="#9faad5"/>
-                                                                <Setter Property="HorizontalContentAlignment" Value="Center"/>
-                                                                <Setter Property="BorderBrush" Value="Black"/>
-                                                                <Setter Property="BorderThickness" Value="1"/>
-                                                                <Setter Property="FontSize" Value="15"/>
-                                                            </Style>
-                                                        </DataGridTextColumn.HeaderStyle>
-                                                        <DataGridTextColumn.ElementStyle>
-                                                            <Style TargetType="TextBlock">
-                                                                <Setter Property="Foreground" Value="Black"/>
-                                                            </Style>
-                                                        </DataGridTextColumn.ElementStyle>
-                                                    </DataGridTextColumn>
-                                                    <DataGridTextColumn Header="{x:Static resource:Resources.PriceResources}" 
-                                                                        Binding="{Binding PriceData}" Width="120">
-                                                        <DataGridTextColumn.HeaderStyle>
-                                                            <Style TargetType="DataGridColumnHeader">
-                                                                <Setter Property="Foreground" Value="Black"/>
-                                                                <Setter Property="Background" Value="#9faad5"/>
-                                                                <Setter Property="HorizontalContentAlignment" Value="Center"/>
-                                                                <Setter Property="BorderBrush" Value="Black"/>
-                                                                <Setter Property="BorderThickness" Value="1"/>
-                                                                <Setter Property="FontSize" Value="15"/>
-                                                            </Style>
-                                                        </DataGridTextColumn.HeaderStyle>
-                                                        <DataGridTextColumn.ElementStyle>
-                                                            <Style TargetType="TextBlock">
-                                                                <Setter Property="Foreground" Value="Black"/>
-                                                            </Style>
-                                                        </DataGridTextColumn.ElementStyle>
-                                                    </DataGridTextColumn>
-                                                </DataGrid.Columns>
-                                            </DataGrid>
-                                        </materialDesign:Card>
-                                    </Grid>
-                                </Grid>
+                                    </TextBlock.Style>
+                                </TextBlock>
+                            </Grid>
+                            <Grid Grid.Column="1">
+                                <TextBox 
+                                    x:Name="EndRangePrice" Style="{StaticResource TextBox}" Margin="10,30,0,0" 
+                                    VerticalAlignment="Top" HorizontalAlignment="Left"
+                                    Text="{Binding EndRangePrice, UpdateSourceTrigger=PropertyChanged}" 
+                                    Height="25" Width="90" Foreground="Black">
+                                </TextBox>
+                                <TextBlock 
+                                    IsHitTestVisible="False" FontSize="13" 
+                                    Text="{x:Static resource:Resources.BeforeRecources}" Margin="15,34,0,0" 
+                                    VerticalAlignment="Top" Width="70" HorizontalAlignment="Left">
+                                    <TextBlock.Style>
+                                        <Style TargetType="{x:Type TextBlock}">
+                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding Text, ElementName=EndRangePrice}" Value="">
+                                                    <Setter Property="Visibility" Value="Visible"/>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </TextBlock.Style>
+                                </TextBlock>
                             </Grid>
                         </Grid>
-                    </DataTemplate>
-                </ContentPresenter.ContentTemplate>
-            </ContentPresenter>
+                    </Grid>
+
+                    <Grid Grid.Column="0" Name="FilterGridPublisherYear" Margin="0,90,0,0">
+                        <TextBlock Text="{x:Static resource:Resources.YearPublicationRecources}" FontSize="14" Foreground="White" Margin="10,0,0,0"/>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="100"/>
+                                <ColumnDefinition Width="100"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Grid Grid.Column="0">
+                                <TextBox 
+                                    x:Name="BeginRangePublisherYear" Style="{StaticResource TextBox}" Margin="10,30,0,0" 
+                                    VerticalAlignment="Top" HorizontalAlignment="Left"
+                                    Text="{Binding SearchFormPublisherBeginYear, UpdateSourceTrigger=PropertyChanged}" 
+                                    Height="25" Width="90" Foreground="Black">
+                                </TextBox>
+                                <TextBlock 
+                                    IsHitTestVisible="False" FontSize="13" 
+                                    Text="{x:Static resource:Resources.FromRecources}" Margin="10,34,0,0" 
+                                    VerticalAlignment="Top" Width="70" HorizontalAlignment="Center">
+                                    <TextBlock.Style>
+                                        <Style TargetType="{x:Type TextBlock}">
+                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding Text, ElementName=BeginRangePublisherYear}" Value="">
+                                                    <Setter Property="Visibility" Value="Visible"/>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </TextBlock.Style>
+                                </TextBlock>
+                            </Grid>
+                            <Grid Grid.Column="1">
+                                <TextBox 
+                                    x:Name="EndRangePublisherYear" Style="{StaticResource TextBox}" Margin="10,30,0,0" 
+                                    VerticalAlignment="Top" HorizontalAlignment="Left"
+                                    Text="{Binding SearchFormPublisheEndYear, UpdateSourceTrigger=PropertyChanged}" 
+                                    Height="25" Width="90" Foreground="Black">
+                                </TextBox>
+                                <TextBlock 
+                                    IsHitTestVisible="False" FontSize="13" 
+                                    Text="{x:Static resource:Resources.BeforeRecources}" Margin="15,34,0,0" 
+                                    VerticalAlignment="Top" Width="70" HorizontalAlignment="Left">
+                                    <TextBlock.Style>
+                                        <Style TargetType="{x:Type TextBlock}">
+                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding Text, ElementName=EndRangePublisherYear}" Value="">
+                                                    <Setter Property="Visibility" Value="Visible"/>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </TextBlock.Style>
+                                </TextBlock>
+                            </Grid>
+                        </Grid>
+                    </Grid>
+                    <Grid Grid.Column="0" Name="FilterGridStatus" Margin="0,180,0,0">
+                        <TextBlock 
+                            Text="{x:Static resource:Resources.StatusRecources}" FontSize="14" 
+                            Foreground="White" Margin="10,0,0,0">
+                        </TextBlock>
+                        <Grid>
+                            <ToggleButton 
+                                Name="StatusNewBook" Grid.Row="2" Height="30" Width="140" 
+                                HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,25,0,0" 
+                                Content="{x:Static resource:Resources.NewProductsRecources}" 
+                                Foreground="#a69fab" FontSize="12" 
+                                Style="{StaticResource CustomToggleButtonStyle}"
+                                IsChecked="{Binding IsStatusNewBookChecked, Mode=TwoWay}">
+                            </ToggleButton>
+                            <ToggleButton 
+                                Name="StatusBestsellers" Grid.Row="2" Height="30" Width="140" 
+                                HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,60,0,0" 
+                                Content="{x:Static resource:Resources.BestsellersRecources}" 
+                                Foreground="#a69fab" FontSize="12" 
+                                Style="{StaticResource CustomToggleButtonStyle}"
+                                IsChecked="{Binding IsStatusBestsellersChecked, Mode=TwoWay}">
+                            </ToggleButton>
+                            <ToggleButton 
+                                Name="StatusPreOrder" Grid.Row="2" Height="30" Width="140" 
+                                HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,95,0,0" 
+                                Content="{x:Static resource:Resources.Pre_orderRecources}" 
+                                Foreground="#a69fab" FontSize="12" 
+                                Style="{StaticResource CustomToggleButtonStyle}"
+                                IsChecked="{Binding IsStatusPreOrderChecked, Mode=TwoWay}">
+                            </ToggleButton>
+                        </Grid>
+                    </Grid>
+                    <Grid Grid.Column="0" Margin="0,330,0,0">
+                        <TextBlock 
+                            Text="{x:Static resource:Resources.PublishingHousesRecources}" 
+                            FontSize="14" Foreground="White" Margin="10,0,0,0">
+                        </TextBlock>
+                        <Grid>
+                            <ToggleButton 
+                                x:Name="PublisherOne" Grid.Row="2" Height="30" Width="140" 
+                                HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,30,0,0" 
+                                Content="{Binding BestPublisherOne}" Foreground="#a69fab" FontSize="12" 
+                                Style="{StaticResource CustomToggleButtonStyle}"
+                                IsChecked="{Binding IsPublisherOneChecked, Mode=TwoWay}">
+                            </ToggleButton>
+                            <TextBlock 
+                                Grid.Row="2" Text="{Binding BestPublisherOneText}" Height="20" Width="140" 
+                                HorizontalAlignment="Left" VerticalAlignment="Top" Margin="40,35,0,0" FontSize="15"
+                                Foreground="#a69fab">
+                            </TextBlock>
+                            <ToggleButton 
+                                Name="PublisherTwo" Grid.Row="2" Height="30" Width="140" 
+                                HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,60,0,0" 
+                                Content="{Binding BestPublisherTwo}" Foreground="#a69fab" FontSize="12" 
+                                Style="{StaticResource CustomToggleButtonStyle}"
+                                IsChecked="{Binding IsPublisherTwoChecked, Mode=TwoWay}">
+                            </ToggleButton>
+                            <TextBlock 
+                                Grid.Row="2" Text="{Binding BestPublisherTwoText}" Height="20" Width="140" 
+                                HorizontalAlignment="Left" VerticalAlignment="Top" Margin="40,65,0,0" FontSize="15"
+                                Foreground="#a69fab">
+                            </TextBlock>
+                            <ToggleButton 
+                                Name="PublisherThree" Grid.Row="2" Height="30" Width="140" 
+                                HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,90,0,0" 
+                                Content="{Binding BestPublisherThree}" Foreground="#a69fab" FontSize="12" 
+                                Style="{StaticResource CustomToggleButtonStyle}"
+                                IsChecked="{Binding IsPublisherThreeChecked, Mode=TwoWay}">
+                            </ToggleButton>
+                            <TextBlock 
+                                Grid.Row="2" Text="{Binding BestPublisherThreeText}" Height="20" Width="140" 
+                                HorizontalAlignment="Left" VerticalAlignment="Top" Margin="40,95,0,0" FontSize="15"
+                                Foreground="#a69fab">
+                            </TextBlock>
+                            <ToggleButton 
+                                Name="PublisherFour" Grid.Row="2" Height="30" Width="140" 
+                                HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,120,0,0" 
+                                Content="{Binding BestPublisherFour}" Foreground="#a69fab" FontSize="12" 
+                                Style="{StaticResource CustomToggleButtonStyle}"
+                                IsChecked="{Binding IsPublisherFourChecked, Mode=TwoWay}">
+                            </ToggleButton>
+                            <TextBlock 
+                                Grid.Row="2" Text="{Binding BestPublisherFourText}" Height="20" Width="140" 
+                                HorizontalAlignment="Left" VerticalAlignment="Top" Margin="40,125,0,0" FontSize="15"
+                                Foreground="#a69fab">
+                            </TextBlock>
+                            <ToggleButton 
+                                Name="PublisherFive" Grid.Row="2" Height="30" Width="140" 
+                                HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,150,0,0" 
+                                Content="{Binding BestPublisherFive}" Foreground="#a69fab" FontSize="12" 
+                                Style="{StaticResource CustomToggleButtonStyle}"
+                                IsChecked="{Binding IsPublisherFiveChecked, Mode=TwoWay}">
+                            </ToggleButton>
+                            <TextBlock 
+                                Grid.Row="2" Text="{Binding BestPublisherFiveText}" Height="20" Width="140" 
+                                HorizontalAlignment="Left" VerticalAlignment="Top" Margin="40,155,0,0" FontSize="15"
+                                Foreground="#a69fab">
+                            </TextBlock>
+                        </Grid>
+                    </Grid>
+
+                    <Grid Grid.Column="0" Name="FilterAuthor" Margin="0,530,0,0">
+                        <TextBlock 
+                            Text="{x:Static resource:Resources.AuthorsRecources}" 
+                            FontSize="14" Foreground="White" Margin="10,0,0,0">
+                        </TextBlock>
+                        <Grid>
+                            <ToggleButton 
+                                Name="AuthorOne" Grid.Row="2" Height="30" Width="140" 
+                                HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,30,0,0" 
+                                Content="{Binding BestAuthorOne}" Foreground="#a69fab" FontSize="12" 
+                                Style="{StaticResource CustomToggleButtonStyle}"
+                                IsChecked="{Binding IsAuthorOneChecked, Mode=TwoWay}">
+                            </ToggleButton>
+                            <TextBlock 
+                                Grid.Row="2" Text="{Binding BestAuthorOneText}" Height="20" Width="140" 
+                                HorizontalAlignment="Left" VerticalAlignment="Top" Margin="40,35,0,0" FontSize="15"
+                                Foreground="#a69fab">
+                            </TextBlock>
+                            <ToggleButton 
+                                Name="AuthorTwo" Grid.Row="2" Height="30" Width="140" 
+                                HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,60,0,0" 
+                                Content="{Binding BestAuthorTwo}" Foreground="#a69fab" FontSize="12" 
+                                Style="{StaticResource CustomToggleButtonStyle}"
+                                IsChecked="{Binding IsAuthorTwoChecked, Mode=TwoWay}">
+                            </ToggleButton>
+                            <TextBlock 
+                                Grid.Row="2" Text="{Binding BestAuthorTwoText}" Height="20" Width="140" 
+                                HorizontalAlignment="Left" VerticalAlignment="Top" Margin="40,65,0,0" FontSize="15"
+                                Foreground="#a69fab">
+                            </TextBlock>
+                            <ToggleButton 
+                                Name="AuthorThree" Grid.Row="2" Height="30" Width="140" 
+                                HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,90,0,0" 
+                                Content="{Binding BestAuthorThree}" Foreground="#a69fab" FontSize="12" 
+                                Style="{StaticResource CustomToggleButtonStyle}"
+                                IsChecked="{Binding IsAuthorThreeChecked, Mode=TwoWay}">
+                            </ToggleButton>
+                            <TextBlock 
+                                Grid.Row="2" Text="{Binding BestPublisherThreeText}" Height="20" Width="140" 
+                                HorizontalAlignment="Left" VerticalAlignment="Top" Margin="40,95,0,0" FontSize="15"
+                                Foreground="#a69fab">
+                            </TextBlock>
+                            <ToggleButton 
+                                Name="AuthorFour" Grid.Row="2" Height="30" Width="140" 
+                                HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,120,0,0" 
+                                Content="{Binding BestAuthorFour}" Foreground="#a69fab" FontSize="12" 
+                                Style="{StaticResource CustomToggleButtonStyle}"
+                                IsChecked="{Binding IsAuthorFourChecked, Mode=TwoWay}">
+                            </ToggleButton>
+                            <TextBlock 
+                                Grid.Row="2" Text="{Binding BestPublisherFourText}" Height="20" Width="140" 
+                                HorizontalAlignment="Left" VerticalAlignment="Top" Margin="40,125,0,0" FontSize="15"
+                                Foreground="#a69fab">
+                            </TextBlock>
+                            <ToggleButton 
+                                Name="AuthorFive" Grid.Row="2" Height="30" Width="140" 
+                                HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,150,0,0" 
+                                Content="{Binding BestAuthorFive}" Foreground="#a69fab" FontSize="12" 
+                                Style="{StaticResource CustomToggleButtonStyle}"
+                                IsChecked="{Binding IsAuthorFiveChecked, Mode=TwoWay}">
+                            </ToggleButton>
+                            <TextBlock 
+                                Grid.Row="2" Text="{Binding BestPublisherFiveText}" Height="20" Width="140" 
+                                HorizontalAlignment="Left" VerticalAlignment="Top" Margin="40,155,0,0" FontSize="15"
+                                Foreground="#a69fab">
+                            </TextBlock>
+                        </Grid>
+                    </Grid>
+                    <Border 
+                        x:Name="ApplyFilterButton" Grid.Column="0" Height="30"
+                        Margin="25,600,25,0" Background="Black">
+                        <Border.Style>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="BorderBrush" Value="#FF333842"/>
+                            </Style>
+                        </Border.Style>
+                        <Button 
+                            Content="{x:Static resource:Resources.ApplyRecources}" 
+                            FontSize="16" Foreground="White" Style="{StaticResource ApplyFilterButton}"
+                            Command="{Binding ApplyFilterCommand}"/>
+                    </Border>
+
+                    <Grid Grid.Column="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="120"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Row="0" Name="SerarchGrid">
+                            <TextBox 
+                                x:Name="SearchAllTextBox" 
+                                Style="{StaticResource TextBox}" Margin="0,30,0,0" 
+                                VerticalAlignment="Top" HorizontalAlignment="Center"
+                                Text="{Binding SearchForm, UpdateSourceTrigger=PropertyChanged}" 
+                                Height="35" Width="600" Foreground="Black">
+                            </TextBox>
+                            <TextBlock 
+                                 IsHitTestVisible="False" FontSize="13" 
+                                 Text="{x:Static resource:Resources.SearchRecources}" Margin="30,39,0,0" 
+                                 VerticalAlignment="Top" Width="600" HorizontalAlignment="Center">
+                                <TextBlock.Style>
+                                    <Style TargetType="{x:Type TextBlock}">
+                                        <Setter Property="Visibility" Value="Collapsed"/>
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding Text, ElementName=SearchAllTextBox}" Value="">
+                                                <Setter Property="Visibility" Value="Visible"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </TextBlock.Style>
+                            </TextBlock>
+                            <Border x:Name="SearchForm" Grid.Column="0" Height="35"
+                                    Margin="800,-25,25,0" Background="Black" Width="120">
+                                <Border.Style>
+                                    <Style TargetType="{x:Type Border}">
+                                        <Setter Property="BorderBrush" Value="#FF333842"/>
+                                    </Style>
+                                </Border.Style>
+                                <Button 
+                                    Content="{x:Static resource:Resources.SearchRecources}" 
+                                    FontSize="16" Foreground="White" Style="{StaticResource ApplyFilterButton}"
+                                    Command="{Binding SearchBookCommand}"/>
+                            </Border>
+
+                        </Grid>
+                        <Grid Name="FilterRadioButton" Margin="200,70,0,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="20"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="20"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+
+                            <RadioButton Grid.Column="0" 
+                                         Content="{x:Static resource:Resources.TitleBookRecources}" 
+                                         Foreground="White"
+                                         IsChecked="{Binding SearchForTitleBook}"/>
+                            <RadioButton Grid.Column="2" 
+                                         Content="{x:Static resource:Resources.GenreRecources}" 
+                                         Foreground="White"
+                                         IsChecked="{Binding SearchForGenreBook}"/>
+                            <RadioButton Grid.Column="4" 
+                                         Content="{x:Static resource:Resources.AuthorsRecources}" 
+                                         Foreground="White"
+                                         IsChecked="{Binding SearchForAuthorBook}"/>
+                        </Grid>
+                        <Grid Grid.Row="1" Name="DataGrid">
+                            <materialDesign:Card Padding="0" Margin="0" HorizontalAlignment="Stretch" 
+                                                             VerticalAlignment="Stretch" Background="#2f285c">
+                                <DataGrid x:Name="Books" AutoGenerateColumns="False" 
+                                          IsReadOnly="True" CanUserAddRows="False" HorizontalAlignment="Stretch" 
+                                          VerticalAlignment="Stretch" Background="#2f285c" Foreground="#9faad5"
+                                          ItemsSource="{Binding Books}">
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn Header="{x:Static resource:Resources.BookIDRecources}" 
+                                                            Binding="{Binding BookIdData}" Width="Auto">
+                                            <DataGridTextColumn.HeaderStyle>
+                                                <Style TargetType="DataGridColumnHeader">
+                                                    <Setter Property="Foreground" Value="Black"/>
+                                                    <Setter Property="FontSize" Value="12"/>
+                                                    <Setter Property="Height" Value="30"/>
+                                                </Style>
+                                            </DataGridTextColumn.HeaderStyle>
+                                            <DataGridTextColumn.ElementStyle>
+                                                <Style TargetType="TextBlock">
+                                                    <Setter Property="Foreground" Value="Black"/>
+                                                    <Setter Property="HorizontalAlignment" Value="Left"/>
+                                                    <Setter Property="Padding" Value="0"/>
+                                                </Style>
+                                            </DataGridTextColumn.ElementStyle>
+                                        </DataGridTextColumn>
+                                        <DataGridTextColumn Header="{x:Static resource:Resources.BookTitleResources}" 
+                                                            Binding="{Binding TitleData}" Width="220">
+                                            <DataGridTextColumn.HeaderStyle>
+                                                <Style TargetType="DataGridColumnHeader">
+                                                    <Setter Property="Foreground" Value="Black"/>
+                                                    <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                                                    <Setter Property="FontSize" Value="13"/>
+                                                </Style>
+                                            </DataGridTextColumn.HeaderStyle>
+                                            <DataGridTextColumn.ElementStyle>
+                                                <Style TargetType="TextBlock">
+                                                    <Setter Property="Foreground" Value="Black"/>
+                                                </Style>
+                                            </DataGridTextColumn.ElementStyle>
+                                        </DataGridTextColumn>
+                                        <DataGridTextColumn Header="{x:Static resource:Resources.PublisherResources}" 
+                                                            Binding="{Binding PublisherData}" Width="70">
+                                            <DataGridTextColumn.HeaderStyle>
+                                                <Style TargetType="DataGridColumnHeader">
+                                                    <Setter Property="Foreground" Value="Black"/>
+                                                    <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                                                    <Setter Property="FontSize" Value="13"/>
+                                                </Style>
+                                            </DataGridTextColumn.HeaderStyle>
+                                            <DataGridTextColumn.ElementStyle>
+                                                <Style TargetType="TextBlock">
+                                                    <Setter Property="Foreground" Value="Black"/>
+                                                </Style>
+                                            </DataGridTextColumn.ElementStyle>
+                                        </DataGridTextColumn>
+                                        <DataGridTextColumn Header="{x:Static resource:Resources.PublicationDateResources}" 
+                                                            Binding="{Binding PublicationDateData}" Width="110">
+                                            <DataGridTextColumn.HeaderStyle>
+                                                <Style TargetType="DataGridColumnHeader">
+                                                    <Setter Property="Foreground" Value="Black"/>
+                                                    <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                                                    <Setter Property="FontSize" Value="13"/>
+                                                </Style>
+                                            </DataGridTextColumn.HeaderStyle>
+                                            <DataGridTextColumn.ElementStyle>
+                                                <Style TargetType="TextBlock">
+                                                    <Setter Property="Foreground" Value="Black"/>
+                                                </Style>
+                                            </DataGridTextColumn.ElementStyle>
+                                        </DataGridTextColumn>
+                                        <DataGridTextColumn Header="{x:Static resource:Resources.DescriptionResources}" 
+                                                            Binding="{Binding DescriptionData}" Width="245">
+                                            <DataGridTextColumn.HeaderStyle>
+                                                <Style TargetType="DataGridColumnHeader">
+                                                    <Setter Property="Foreground" Value="Black"/>
+                                                    <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                                                    <Setter Property="FontSize" Value="15"/>
+                                                </Style>
+                                            </DataGridTextColumn.HeaderStyle>
+                                            <DataGridTextColumn.ElementStyle>
+                                                <Style TargetType="TextBlock">
+                                                    <Setter Property="Foreground" Value="Black"/>
+                                                </Style>
+                                            </DataGridTextColumn.ElementStyle>
+                                        </DataGridTextColumn>
+                                        <DataGridTextColumn Header="{x:Static resource:Resources.PriceResources}" 
+                                                            Binding="{Binding PriceData}" Width="90">
+                                            <DataGridTextColumn.HeaderStyle>
+                                                <Style TargetType="DataGridColumnHeader">
+                                                    <Setter Property="Foreground" Value="Black"/>
+                                                    <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                                                    <Setter Property="FontSize" Value="15"/>
+                                                </Style>
+                                            </DataGridTextColumn.HeaderStyle>
+                                            <DataGridTextColumn.ElementStyle>
+                                                <Style TargetType="TextBlock">
+                                                    <Setter Property="Foreground" Value="Black"/>
+                                                </Style>
+                                            </DataGridTextColumn.ElementStyle>
+                                        </DataGridTextColumn>
+                                        <DataGridTemplateColumn Header="{x:Static resource:Resources.ActionsRecources}">
+                                            <DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                                        <Button 
+                                                            Content="{x:Static resource:Resources.SellRecources}"
+                                                            Background="#4caf50" Foreground="White" Margin="5"
+                                                            Command="{Binding DataContext.SellBookCommand, 
+                                                            RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}"
+                                                            CommandParameter="{Binding}">
+                                                        </Button>
+                                                        <Button 
+                                                            Content="{x:Static resource:Resources.EditRecorces}"
+                                                            Background="#2196f3" Foreground="White" Margin="5"
+                                                            Command="{Binding DataContext.EditBookCommand, 
+                                                            RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}"
+                                                            CommandParameter="{Binding}">
+                                                        </Button>
+                                                        <Button 
+                                                            Content="{x:Static resource:Resources.DeleteRecources}"
+                                                            Background="#f44336" Foreground="White" Margin="5"
+                                                            Command="{Binding DataContext.DeleteBookCommand, 
+                                                            RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}"
+                                                            CommandParameter="{Binding}"/>
+                                                    </StackPanel>
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                        </DataGridTemplateColumn>
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                            </materialDesign:Card>
+                        </Grid>
+                    </Grid>
+                </Grid>
+            </Grid>
         </Grid>
     </Grid>
 </Window>

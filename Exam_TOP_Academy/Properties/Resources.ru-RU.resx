@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ActionsRecources" xml:space="preserve">
+    <value>Действия</value>
+  </data>
   <data name="ApplyRecources" xml:space="preserve">
     <value>Применить</value>
   </data>
@@ -133,7 +136,7 @@
     <value>Бестселлеры</value>
   </data>
   <data name="BookIDRecources" xml:space="preserve">
-    <value>ID книги</value>
+    <value>ID</value>
   </data>
   <data name="BookkeepingRecources" xml:space="preserve">
     <value>КНИЖНЫЙ УЧЕТ</value>
@@ -144,8 +147,14 @@
   <data name="ContinueWithoutLoginResources" xml:space="preserve">
     <value>Продолжить без авторизации</value>
   </data>
+  <data name="DeleteRecources" xml:space="preserve">
+    <value>Удалить</value>
+  </data>
   <data name="DescriptionResources" xml:space="preserve">
     <value>Описание</value>
+  </data>
+  <data name="EditRecorces" xml:space="preserve">
+    <value>Редактировать</value>
   </data>
   <data name="EmailRersources" xml:space="preserve">
     <value>Эл. почта</value>
@@ -218,6 +227,9 @@
   </data>
   <data name="SearchRecources" xml:space="preserve">
     <value>Поиск</value>
+  </data>
+  <data name="SellRecources" xml:space="preserve">
+    <value>Продать</value>
   </data>
   <data name="SettingsResources" xml:space="preserve">
     <value>Настройки</value>

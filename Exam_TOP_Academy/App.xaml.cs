@@ -33,7 +33,7 @@ public partial class App : Application
 
 
             base.OnStartup(e);
-            var mainWindow = new MainWindow();
+            var mainWindow = new AuthorizationWindow();
             mainWindow.Show();
         }
     }

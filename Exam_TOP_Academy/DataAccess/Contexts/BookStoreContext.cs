@@ -45,8 +45,6 @@ public partial class BookStoreContext : DbContext
     public virtual DbSet<Salebook> Salebooks { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-    // => optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Username=postgres;Password=1;Database=BooksCodeFirst;");
-    //=> optionsBuilder.UseNpgsql(configuration.GetConnectionString("BooksConnectionString"));
     {
         optionsBuilder.UseNpgsql(configuration.GetConnectionString("BooksConnectionString"));
         optionsBuilder.LogTo(s => Debug.WriteLine(s));
@@ -73,6 +71,12 @@ public partial class BookStoreContext : DbContext
     public void AddUser(Registereduser newUser)
     {
         Registeredusers.Add(newUser);
+        SaveChanges();
+    }
+
+    public void AddSale(Sale newSale)
+    {
+        Sales.Add(newSale);
         SaveChanges();
     }
 
