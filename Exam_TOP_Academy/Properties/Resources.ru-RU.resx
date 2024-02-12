@@ -117,11 +117,44 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ActionsRecources" xml:space="preserve">
+    <value>Действия</value>
+  </data>
+  <data name="ApplyRecources" xml:space="preserve">
+    <value>Применить</value>
+  </data>
   <data name="AuthorizationResources" xml:space="preserve">
     <value>Авторизоваться</value>
   </data>
+  <data name="AuthorsRecources" xml:space="preserve">
+    <value>Авторы</value>
+  </data>
+  <data name="BeforeRecources" xml:space="preserve">
+    <value>До</value>
+  </data>
+  <data name="BestsellersRecources" xml:space="preserve">
+    <value>Бестселлеры</value>
+  </data>
+  <data name="BookIDRecources" xml:space="preserve">
+    <value>ID</value>
+  </data>
+  <data name="BookkeepingRecources" xml:space="preserve">
+    <value>КНИЖНЫЙ УЧЕТ</value>
+  </data>
+  <data name="BookTitleResources" xml:space="preserve">
+    <value>Название книги</value>
+  </data>
   <data name="ContinueWithoutLoginResources" xml:space="preserve">
     <value>Продолжить без авторизации</value>
+  </data>
+  <data name="DeleteRecources" xml:space="preserve">
+    <value>Удалить</value>
+  </data>
+  <data name="DescriptionResources" xml:space="preserve">
+    <value>Описание</value>
+  </data>
+  <data name="EditRecorces" xml:space="preserve">
+    <value>Редактировать</value>
   </data>
   <data name="EmailRersources" xml:space="preserve">
     <value>Эл. почта</value>
@@ -131,6 +164,12 @@
   </data>
   <data name="ExistingAccountResources" xml:space="preserve">
     <value>Уже есть учетная запись?</value>
+  </data>
+  <data name="FromRecources" xml:space="preserve">
+    <value>От</value>
+  </data>
+  <data name="GenreRecources" xml:space="preserve">
+    <value>Жанр</value>
   </data>
   <data name="HelpMeResources" xml:space="preserve">
     <value>Мне нужна помощь</value>
@@ -150,16 +189,61 @@
   <data name="LoginResources" xml:space="preserve">
     <value>Логин</value>
   </data>
+  <data name="MainRecources" xml:space="preserve">
+    <value>ГЛАВНАЯ</value>
+  </data>
+  <data name="NewProductsRecources" xml:space="preserve">
+    <value>Новинки</value>
+  </data>
+  <data name="Pre-orderRecources" xml:space="preserve">
+    <value>Предзаказ</value>
+  </data>
+  <data name="PriceRecources" xml:space="preserve">
+    <value>Цена</value>
+  </data>
+  <data name="PriceResources" xml:space="preserve">
+    <value>Цена</value>
+  </data>
+  <data name="PublicationDateResources" xml:space="preserve">
+    <value>Дата публикации</value>
+  </data>
+  <data name="PublisherResources" xml:space="preserve">
+    <value>Издатель</value>
+  </data>
+  <data name="PublishingHousesRecources" xml:space="preserve">
+    <value>Издательства</value>
+  </data>
   <data name="RegisterOnResources" xml:space="preserve">
     <value>Нет аккаунта? Зарегистрируйтесь</value>
   </data>
   <data name="RegistrationResources" xml:space="preserve">
     <value>Зарегистрироваться</value>
   </data>
+  <data name="SearchAuthorsRecources" xml:space="preserve">
+    <value>Искать автора</value>
+  </data>
+  <data name="SearchPublisherRecources" xml:space="preserve">
+    <value>Искать издательство</value>
+  </data>
+  <data name="SearchRecources" xml:space="preserve">
+    <value>Поиск</value>
+  </data>
+  <data name="SellRecources" xml:space="preserve">
+    <value>Продать</value>
+  </data>
   <data name="SettingsResources" xml:space="preserve">
     <value>Настройки</value>
   </data>
+  <data name="StatusRecources" xml:space="preserve">
+    <value>Статус</value>
+  </data>
   <data name="StayOnlineResources" xml:space="preserve">
     <value>Оставаться в сети</value>
+  </data>
+  <data name="TitleBookRecources" xml:space="preserve">
+    <value>Название книги</value>
+  </data>
+  <data name="YearPublicationRecources" xml:space="preserve">
+    <value>Год публикации</value>
   </data>
 </root>

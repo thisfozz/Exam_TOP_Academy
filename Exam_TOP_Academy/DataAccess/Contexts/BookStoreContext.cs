@@ -1,13 +1,22 @@
 ﻿using Exam_TOP_Academy.DataAccess.Configurations;
 using Exam_TOP_Academy.DataAccess.Entities;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using System.Diagnostics;
 
 namespace Exam_TOP_Academy.DataAccess.Contexts;
 
 public partial class BookStoreContext : DbContext
 {
+    private readonly IConfiguration configuration;
+
     public BookStoreContext()
     {
+    }
+
+    public BookStoreContext(IConfiguration configuration)
+    {
+        this.configuration = configuration;
     }
 
     public BookStoreContext(DbContextOptions<BookStoreContext> options)
@@ -35,10 +44,13 @@ public partial class BookStoreContext : DbContext
 
     public virtual DbSet<Salebook> Salebooks { get; set; }
 
-    public virtual DbSet<Sequel> Sequels { get; set; }
-
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        => optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Username=this;Password=this;Database=BookStore;");
+    {
+        optionsBuilder.UseNpgsql(configuration.GetConnectionString("BooksConnectionString"));
+        optionsBuilder.LogTo(s => Debug.WriteLine(s));
+        optionsBuilder.EnableSensitiveDataLogging();
+        optionsBuilder.UseLazyLoadingProxies();
+    }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -52,7 +64,6 @@ public partial class BookStoreContext : DbContext
         modelBuilder.ApplyConfiguration(new ReservedbookConfiguration());
         modelBuilder.ApplyConfiguration(new SaleConfiguration());
         modelBuilder.ApplyConfiguration(new SalebookConfiguration());
-        modelBuilder.ApplyConfiguration(new SequelConfiguration());
 
         OnModelCreatingPartial(modelBuilder);
     }
@@ -62,6 +73,13 @@ public partial class BookStoreContext : DbContext
         Registeredusers.Add(newUser);
         SaveChanges();
     }
+
+    public void AddSale(Sale newSale)
+    {
+        Sales.Add(newSale);
+        SaveChanges();
+    }
+
 
     partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
 }

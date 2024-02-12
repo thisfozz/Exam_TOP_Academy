@@ -61,6 +61,24 @@ namespace Exam_TOP_Academy.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Actions.
+        /// </summary>
+        public static string ActionsRecources {
+            get {
+                return ResourceManager.GetString("ActionsRecources", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Apply.
+        /// </summary>
+        public static string ApplyRecources {
+            get {
+                return ResourceManager.GetString("ApplyRecources", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Authorization.
         /// </summary>
         public static string AuthorizationResources {
@@ -70,11 +88,92 @@ namespace Exam_TOP_Academy.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Authors.
+        /// </summary>
+        public static string AuthorsRecources {
+            get {
+                return ResourceManager.GetString("AuthorsRecources", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Before.
+        /// </summary>
+        public static string BeforeRecources {
+            get {
+                return ResourceManager.GetString("BeforeRecources", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Bestsellers.
+        /// </summary>
+        public static string BestsellersRecources {
+            get {
+                return ResourceManager.GetString("BestsellersRecources", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на ID.
+        /// </summary>
+        public static string BookIDRecources {
+            get {
+                return ResourceManager.GetString("BookIDRecources", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на BOOKKEEPING.
+        /// </summary>
+        public static string BookkeepingRecources {
+            get {
+                return ResourceManager.GetString("BookkeepingRecources", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Book Title.
+        /// </summary>
+        public static string BookTitleResources {
+            get {
+                return ResourceManager.GetString("BookTitleResources", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Continue Without Login In.
         /// </summary>
         public static string ContinueWithoutLoginResources {
             get {
                 return ResourceManager.GetString("ContinueWithoutLoginResources", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Delete book.
+        /// </summary>
+        public static string DeleteRecources {
+            get {
+                return ResourceManager.GetString("DeleteRecources", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Description.
+        /// </summary>
+        public static string DescriptionResources {
+            get {
+                return ResourceManager.GetString("DescriptionResources", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Edit book.
+        /// </summary>
+        public static string EditRecorces {
+            get {
+                return ResourceManager.GetString("EditRecorces", resourceCulture);
             }
         }
         
@@ -102,6 +201,24 @@ namespace Exam_TOP_Academy.Properties {
         public static string ExistingAccountResources {
             get {
                 return ResourceManager.GetString("ExistingAccountResources", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на From.
+        /// </summary>
+        public static string FromRecources {
+            get {
+                return ResourceManager.GetString("FromRecources", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Genre.
+        /// </summary>
+        public static string GenreRecources {
+            get {
+                return ResourceManager.GetString("GenreRecources", resourceCulture);
             }
         }
         
@@ -160,6 +277,78 @@ namespace Exam_TOP_Academy.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на MAIN.
+        /// </summary>
+        public static string MainRecources {
+            get {
+                return ResourceManager.GetString("MainRecources", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на New Products.
+        /// </summary>
+        public static string NewProductsRecources {
+            get {
+                return ResourceManager.GetString("NewProductsRecources", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Pre-order.
+        /// </summary>
+        public static string Pre_orderRecources {
+            get {
+                return ResourceManager.GetString("Pre-orderRecources", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Price.
+        /// </summary>
+        public static string PriceRecources {
+            get {
+                return ResourceManager.GetString("PriceRecources", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Price.
+        /// </summary>
+        public static string PriceResources {
+            get {
+                return ResourceManager.GetString("PriceResources", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Publication Date.
+        /// </summary>
+        public static string PublicationDateResources {
+            get {
+                return ResourceManager.GetString("PublicationDateResources", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Publisher.
+        /// </summary>
+        public static string PublisherResources {
+            get {
+                return ResourceManager.GetString("PublisherResources", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Publishing Houses.
+        /// </summary>
+        public static string PublishingHousesRecources {
+            get {
+                return ResourceManager.GetString("PublishingHousesRecources", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Create Account.
         /// </summary>
         public static string RegisterOnResources {
@@ -178,6 +367,42 @@ namespace Exam_TOP_Academy.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Search for the author.
+        /// </summary>
+        public static string SearchAuthorsRecources {
+            get {
+                return ResourceManager.GetString("SearchAuthorsRecources", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Search for a publisher.
+        /// </summary>
+        public static string SearchPublisherRecources {
+            get {
+                return ResourceManager.GetString("SearchPublisherRecources", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Search.
+        /// </summary>
+        public static string SearchRecources {
+            get {
+                return ResourceManager.GetString("SearchRecources", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Sell book.
+        /// </summary>
+        public static string SellRecources {
+            get {
+                return ResourceManager.GetString("SellRecources", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Settings.
         /// </summary>
         public static string SettingsResources {
@@ -187,11 +412,38 @@ namespace Exam_TOP_Academy.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Status.
+        /// </summary>
+        public static string StatusRecources {
+            get {
+                return ResourceManager.GetString("StatusRecources", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Keep me logged in.
         /// </summary>
         public static string StayOnlineResources {
             get {
                 return ResourceManager.GetString("StayOnlineResources", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на The title of the book.
+        /// </summary>
+        public static string TitleBookRecources {
+            get {
+                return ResourceManager.GetString("TitleBookRecources", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Year publication.
+        /// </summary>
+        public static string YearPublicationRecources {
+            get {
+                return ResourceManager.GetString("YearPublicationRecources", resourceCulture);
             }
         }
     }

@@ -11,7 +11,7 @@ public partial class App : Application
 {
     protected override void OnStartup(StartupEventArgs e)
     {
-        string filePath = @"appsettings.json";
+        string filePath = @"appsettingslang.json";
         if (File.Exists(filePath))
         {
             string jsonData = File.ReadAllText(filePath);
@@ -33,7 +33,7 @@ public partial class App : Application
 
 
             base.OnStartup(e);
-            var mainWindow = new MainWindow();
+            var mainWindow = new AuthorizationWindow();
             mainWindow.Show();
         }
     }

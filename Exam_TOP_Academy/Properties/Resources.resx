@@ -117,11 +117,44 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ActionsRecources" xml:space="preserve">
+    <value>Actions</value>
+  </data>
+  <data name="ApplyRecources" xml:space="preserve">
+    <value>Apply</value>
+  </data>
   <data name="AuthorizationResources" xml:space="preserve">
     <value>Authorization</value>
   </data>
+  <data name="AuthorsRecources" xml:space="preserve">
+    <value>Authors</value>
+  </data>
+  <data name="BeforeRecources" xml:space="preserve">
+    <value>Before</value>
+  </data>
+  <data name="BestsellersRecources" xml:space="preserve">
+    <value>Bestsellers</value>
+  </data>
+  <data name="BookIDRecources" xml:space="preserve">
+    <value>ID</value>
+  </data>
+  <data name="BookkeepingRecources" xml:space="preserve">
+    <value>BOOKKEEPING</value>
+  </data>
+  <data name="BookTitleResources" xml:space="preserve">
+    <value>Book Title</value>
+  </data>
   <data name="ContinueWithoutLoginResources" xml:space="preserve">
     <value>Continue Without Login In</value>
+  </data>
+  <data name="DeleteRecources" xml:space="preserve">
+    <value>Delete book</value>
+  </data>
+  <data name="DescriptionResources" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="EditRecorces" xml:space="preserve">
+    <value>Edit book</value>
   </data>
   <data name="EmailRersources" xml:space="preserve">
     <value>Email</value>
@@ -131,6 +164,12 @@
   </data>
   <data name="ExistingAccountResources" xml:space="preserve">
     <value>Existing Account?</value>
+  </data>
+  <data name="FromRecources" xml:space="preserve">
+    <value>From</value>
+  </data>
+  <data name="GenreRecources" xml:space="preserve">
+    <value>Genre</value>
   </data>
   <data name="HelpMeResources" xml:space="preserve">
     <value>Help Me</value>
@@ -150,16 +189,61 @@
   <data name="LoginResources" xml:space="preserve">
     <value>Login</value>
   </data>
+  <data name="MainRecources" xml:space="preserve">
+    <value>MAIN</value>
+  </data>
+  <data name="NewProductsRecources" xml:space="preserve">
+    <value>New Products</value>
+  </data>
+  <data name="Pre-orderRecources" xml:space="preserve">
+    <value>Pre-order</value>
+  </data>
+  <data name="PriceRecources" xml:space="preserve">
+    <value>Price</value>
+  </data>
+  <data name="PriceResources" xml:space="preserve">
+    <value>Price</value>
+  </data>
+  <data name="PublicationDateResources" xml:space="preserve">
+    <value>Publication Date</value>
+  </data>
+  <data name="PublisherResources" xml:space="preserve">
+    <value>Publisher</value>
+  </data>
+  <data name="PublishingHousesRecources" xml:space="preserve">
+    <value>Publishing Houses</value>
+  </data>
   <data name="RegisterOnResources" xml:space="preserve">
     <value>Create Account</value>
   </data>
   <data name="RegistrationResources" xml:space="preserve">
     <value>Registration</value>
   </data>
+  <data name="SearchAuthorsRecources" xml:space="preserve">
+    <value>Search for the author</value>
+  </data>
+  <data name="SearchPublisherRecources" xml:space="preserve">
+    <value>Search for a publisher</value>
+  </data>
+  <data name="SearchRecources" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="SellRecources" xml:space="preserve">
+    <value>Sell book</value>
+  </data>
   <data name="SettingsResources" xml:space="preserve">
     <value>Settings</value>
   </data>
+  <data name="StatusRecources" xml:space="preserve">
+    <value>Status</value>
+  </data>
   <data name="StayOnlineResources" xml:space="preserve">
     <value>Keep me logged in</value>
+  </data>
+  <data name="TitleBookRecources" xml:space="preserve">
+    <value>The title of the book</value>
+  </data>
+  <data name="YearPublicationRecources" xml:space="preserve">
+    <value>Year publication</value>
   </data>
 </root>

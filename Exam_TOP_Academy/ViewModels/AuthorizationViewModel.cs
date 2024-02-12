@@ -2,6 +2,7 @@
 using Command_;
 using Exam_TOP_Academy.DataAccess.Contexts;
 using Exam_TOP_Academy.View;
+using Microsoft.Extensions.Configuration;
 using System.ComponentModel;
 using System.Windows;
 using System.Windows.Input;
@@ -47,8 +48,11 @@ public class AuthorizationViewModel : INotifyPropertyChanged
         }
     }
 
+    private readonly IConfiguration configuration;
     public AuthorizationViewModel()
     {
+        configuration = BuildConfiguration();
+
         SettingsGridVisibility = Visibility.Collapsed;
         OpenSettingsGridCommand = new DelegateCommand(OpenSettingsGrid, _ => true);
         AuthorizationButtonCommand = new DelegateCommand(Authorization, _ => true);
@@ -74,6 +78,11 @@ public class AuthorizationViewModel : INotifyPropertyChanged
         }
     }
 
+    private IConfiguration BuildConfiguration()
+    {
+        return new ConfigurationBuilder().SetBasePath(AppDomain.CurrentDomain.BaseDirectory).AddJsonFile("appsettings.json").Build();
+    }
+
     private void OpenSettingsGrid(object obj)
     {
         SettingsGridVisibility = (SettingsGridVisibility == Visibility.Visible)? Visibility.Collapsed : Visibility.Visible;
@@ -81,7 +90,7 @@ public class AuthorizationViewModel : INotifyPropertyChanged
 
     private void Authorization(object obj)
     {
-        using var context = new BookStoreContext();
+        var context = new BookStoreContext(configuration);
         var user = context.Registeredusers.FirstOrDefault(u => u.Login == LoginOrEmail || u.Email == LoginOrEmail);
 
         if (user != null)

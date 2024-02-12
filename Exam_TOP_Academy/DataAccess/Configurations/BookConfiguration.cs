@@ -21,7 +21,6 @@ internal class BookConfiguration : IEntityTypeConfiguration<Book>
         builder.Property(e => e.SellingPrice)
             .HasPrecision(6, 2)
             .HasColumnName("selling_price");
-        builder.Property(e => e.SequelId).HasColumnName("sequel_id");
         builder.Property(e => e.Title)
             .HasMaxLength(100)
             .HasColumnName("title");
@@ -42,8 +41,9 @@ internal class BookConfiguration : IEntityTypeConfiguration<Book>
             .OnDelete(DeleteBehavior.ClientSetNull)
             .HasConstraintName("book_publisher_id_fkey");
 
-        builder.HasOne(d => d.Sequel).WithMany(p => p.InverseSequel)
-            .HasForeignKey(d => d.SequelId)
-            .HasConstraintName("book_sequel_id_fkey");
+        builder.Property(e => e.DateAdded)
+            .HasColumnName("date_added")
+            .ValueGeneratedOnAddOrUpdate()
+            .HasDefaultValueSql("CURRENT_TIMESTAMP");
     }
 }
